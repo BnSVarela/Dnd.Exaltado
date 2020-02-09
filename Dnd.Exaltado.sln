@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dnd.Exaltado.Web", "Dnd.Exaltado.Web\Dnd.Exaltado.Web.csproj", "{B316BF18-C7B3-4362-AA5D-31637F3277D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Front", "1 - Front", "{988AC20B-170C-43E6-8392-7C04DCCEFE6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- Back", "2- Back", "{D45E4375-2A49-4EB3-88DE-B4AC9246D5DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - CrossCutting", "3 - CrossCutting", "{11183F93-2C95-4831-B584-966389D4B6FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{3BA0A72F-97D5-4A9F-A271-5D998A3F8D60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{039FEB1D-72C1-42D5-A54A-A640548E0E38}"
+	ProjectSection(SolutionItems) = preProject
+		Estrutura.txt = Estrutura.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B316BF18-C7B3-4362-AA5D-31637F3277D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B316BF18-C7B3-4362-AA5D-31637F3277D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B316BF18-C7B3-4362-AA5D-31637F3277D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B316BF18-C7B3-4362-AA5D-31637F3277D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B316BF18-C7B3-4362-AA5D-31637F3277D7} = {988AC20B-170C-43E6-8392-7C04DCCEFE6A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB143078-270F-4057-978B-3BBE52A6AC4F}
+	EndGlobalSection
+EndGlobal

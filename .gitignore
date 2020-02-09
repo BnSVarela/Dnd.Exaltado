@@ -1,0 +1,8 @@
+*.cache
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+Dnd.Exaltado.Web/obj/
+.vs/Dnd.Exaltado/v16/
+Dnd.Exaltado.Web/bin/

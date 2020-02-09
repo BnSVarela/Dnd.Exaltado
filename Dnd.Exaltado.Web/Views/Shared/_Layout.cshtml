@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dnd.Exaltado.Web</title>
+    
+    @Html.Partial("_Style")
+
+</head>
+
+<body>
+
+    @Html.Partial("_Header")
+
+
+    <div class="container-fluid">
+        <div class="sidebar">
+            @Html.Partial("_Sidebar")
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            @Html.Partial("_Footer")
+        </div>
+    </div>
+
+    @Html.Partial("_Script")
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
