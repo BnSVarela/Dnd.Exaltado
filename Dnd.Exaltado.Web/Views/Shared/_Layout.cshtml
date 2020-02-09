@@ -2,34 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Dnd.Exaltado.Web</title>
-    
-    @Html.Partial("_Style")
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <title>Campanha Exaltados</title>
+
+   @Html.Partial("_Style")
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
 
-    @Html.Partial("_Header")
+        @Html.Partial("_Header")
+        
+        @Html.Partial("_Sidebar")
 
-
-    <div class="container-fluid">
-        <div class="sidebar">
-            @Html.Partial("_Sidebar")
+        
+        <div class="content-wrapper">
+        
+            <div class="content-header">
+                <div class="container-fluid">
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div>
+                        @RenderBody()
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
-        <div class="content">
-            @RenderBody()
-        </div>
-        <div class="footer">
-            @Html.Partial("_Footer")
-        </div>
-    </div>
-
+        
+        @Html.Partial("_Footer")
+    </div>    
+    
     @Html.Partial("_Script")
-
-    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
