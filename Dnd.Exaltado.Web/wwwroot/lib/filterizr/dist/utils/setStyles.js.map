@@ -1,1 +1,0 @@
-{"version":3,"file":"setStyles.js","sourceRoot":"","sources":["../../src/utils/setStyles.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AACH,MAAM,UAAU,SAAS,CAAC,IAAa,EAAE,MAAW;IAClD,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,CAAC,OAAO,CAAC,UAAC,EAAY;YAAX,WAAG,EAAE,aAAK;QACvC,IAAoB,CAAC,KAAa,CAAC,GAAG,CAAC,GAAG,KAAK,CAAC;IACpD,CAAC,CAAC,CAAC;AACL,CAAC"}
