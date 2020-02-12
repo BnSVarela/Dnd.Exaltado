@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <title>Campanha Exaltados</title>
+    <title>Campanha Exaltados @ViewData["Title"]</title>
 
    @Html.Partial("_Style")
 </head>
@@ -40,6 +39,8 @@
     </div>    
     
     @Html.Partial("_Script")
+
+    @RenderSection("Scripts",required: false)
 </body>
 
 </html>

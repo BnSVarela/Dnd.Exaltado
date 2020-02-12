@@ -18,9 +18,13 @@ namespace Dnd.Exaltado.Web.Controllers
 
         public IActionResult Index()
         {
-            
-            _playersService.SearchPlayers();
             return View();
+        }
+
+        public IActionResult SearchPlayers()
+        {
+            var players = _playersService.SearchPlayers();
+            return PartialView("_PlayersPartial");
         }
     }
 }
