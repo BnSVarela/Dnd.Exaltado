@@ -1,5 +1,5 @@
 ﻿<div class="modal fade" tabindex="-1" role="dialog" id="PlayersInsert">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add Player</h4>
@@ -16,20 +16,29 @@
                             var Name = @propertyInfo.Name.Replace("_", "");
 
                             var Type = "";
+                            var DivClass = "";
+                            var InputClass = "form-control";
 
                             switch (propertyInfo.PropertyType.UnderlyingSystemType.ToString()) { 
                                 
                                 case "System.Int32":
-                                    Type = "Number";
+                                    Type = "number";
                                     break;
 
                                 case "System.DateTime":
-                                    Type = "Date";
+                                    Type = "date";
+                                    break;
+
+                                case "System.Boolean":
+                                    Type = "checkbox";
+                                    DivClass = "switch__container float-left";
+                                    InputClass = "switch switch--shadow";
                                     break;
 
                                 default :
-                                    Type = "Text";
+                                    Type = "text";
                                     break;
+                        
                             };                        
 
                             if (Name != "Id")
@@ -40,27 +49,33 @@
 
                                 if (@propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado"))
                                 {
-                                    <div class="card card-outline card-dark" style="margin-top:10px;">
+                                    <div class="card card-outline card-dark">
                                         <div class="card-header">
                                             <b>@Name</b>
                                         </div>
                                         <div class="card-body">
                                             @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                                             {
-
-                                                <label for="@Name">@Name</label>
-                                                <input type="@Type" class="form-control" id="@Name" placeholder="">
+                                                <div class="@DivClass">
+                                                    <label for="@Name">@Name</label>
+                                                    <input type="@Type" class="@InputClass" id="@Name">
+                                                    <label for="@Name"></label>
+                                                </div>
                                             }
                                         </div>
                                     </div>
                                 }
                                 else
                                 {
-                                    <label for="@Name">@Name</label>
-                                    <input type="@Type" class="form-control" id="@Name" placeholder="">
+                                    <div class="@DivClass">
+                                        <label for="@Name">@Name</label>
+                                        <input type="@Type" class="@InputClass" id="@Name">
+                                        <label for="@Name"></label>
+                                    </div>                                    
                                 }
                             }
                         }
+
                     </div>
                 </div>
                
