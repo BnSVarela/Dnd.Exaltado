@@ -20,7 +20,7 @@
                                 <tr role="row">
                                     @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
                                 {
-                                    <th>@propertyInfo.Name</th>
+                                    <th class="@propertyInfo.Name">@propertyInfo.Name</th>
                                 }
                                     <th style="width:195px"></th>
                                 </tr>

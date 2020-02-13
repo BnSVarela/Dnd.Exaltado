@@ -9,6 +9,7 @@ namespace Dnd.Exaltado.Players.Services
             Entity.Players players = new Entity.Players();
             players.PlayerName = "Teste";
             players.CharacterName = "Char";
+            players._Id = 1;
 
             return players;
         }
