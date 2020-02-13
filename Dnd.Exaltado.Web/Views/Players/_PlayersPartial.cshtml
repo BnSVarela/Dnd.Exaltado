@@ -1,62 +1,66 @@
 ﻿@model Dnd.Exaltado.Players.Entity.Players
+@Html.Partial("_PlayersInsert")
 
-<div class="card">
-        <div class="card-header">
-            <a class="btn bg-gradient-success float-left">
-                <i class="fas fa-plus">
-                </i>
-                Add Player
-            </a>
-        </div>
-        <div class="card-body">
+<div class="card card-outline card-dark">
+    <div class="card-header">
+        <a class="btn bg-gradient-success float-left" data-toggle="modal" data-target="#PlayersInsert">
+            <i class="fas fa-plus">
+            </i>
+            Add Player
+        </a>
+    </div>
+    <div class="card-body">
 
-            <div class="dataTables_wrapper dt-bootstrap4">
+        <div class="dataTables_wrapper dt-bootstrap4">
 
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="tabela-players" class="table table-bordered table-striped dataTable" role="grid" data-toggle="data-table">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="tabela-players" class="table table-bordered table-striped dataTable" role="grid" data-toggle="data-table">
 
-                            <thead id="theadItens">
-                                <tr role="row">
-                                    @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
-                                {
-                                    <th class="@propertyInfo.Name">@propertyInfo.Name</th>
-                                }
-                                    <th style="width:195px"></th>
-                                </tr>
-                            
-                            </thead>
+                        <thead id="theadItens">
+                            <tr role="row">
+                                @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
+                            {
+                                <th class="@propertyInfo.Name">@propertyInfo.Name</th>
+                            }
+                                <th style="width:195px"></th>
+                            </tr>
 
-                            <tbody id="tbodyItens">
-                                <tr role="row">
-                                    @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
-                                {
-                                        <td>@propertyInfo.GetValue(Model,null)</td>                                                                                                                                  
-                                }
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder">
-                                            </i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
+                        </thead>
 
-                            </tbody>
-                        </table>
+                        <tbody id="tbodyItens">
+                            <tr role="row">
+                                @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
+                            {
+                                <td>@propertyInfo.GetValue(Model,null)</td>
 
-                    </div>
+                            }
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="#">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
