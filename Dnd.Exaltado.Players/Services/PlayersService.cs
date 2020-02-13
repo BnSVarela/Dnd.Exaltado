@@ -6,7 +6,11 @@ namespace Dnd.Exaltado.Players.Services
     {
         public Entity.Players SearchPlayers()
         {
-            return null;
+            Entity.Players players = new Entity.Players();
+            players.PlayerName = "Teste";
+            players.CharacterName = "Char";
+
+            return players;
         }
     }
 }

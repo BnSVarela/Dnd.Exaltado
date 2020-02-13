@@ -1,6 +1,12 @@
-﻿<div class="card">
+﻿@model Dnd.Exaltado.Players.Entity.Players
+
+<div class="card">
         <div class="card-header">
-            <h3 class="card-title">Players Info</h3>
+            <a class="btn bg-gradient-success float-left">
+                <i class="fas fa-plus">
+                </i>
+                Add Player
+            </a>
         </div>
         <div class="card-body">
 
@@ -12,155 +18,40 @@
 
                             <thead id="theadItens">
                                 <tr role="row">
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
+                                {
+                                    <th>@propertyInfo.Name</th>
+                                }
+                                    <th style="width:195px"></th>
                                 </tr>
+                            
                             </thead>
 
                             <tbody id="tbodyItens">
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
+                                <tr role="row">
+                                    @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
+                                {
+                                        <td>@propertyInfo.GetValue(Model,null)</td>                                                                                                                                  
+                                }
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 1.5</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 2.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 3.0</td>
-                                    <td>Win 2k+ / OSX.3+</td>
-                                    <td>1.9</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Camino 1.0</td>
-                                    <td>OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Camino 1.5</td>
-                                    <td>OSX.3+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape 7.2</td>
-                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape Browser 8</td>
-                                    <td>Win 98SE+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape Navigator 9</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Mozilla 1.0</td>
-                                    <td>Win 95+ / OSX.1+</td>
-                                    <td>1</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 1.5</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 2.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 3.0</td>
-                                    <td>Win 2k+ / OSX.3+</td>
-                                    <td>1.9</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Camino 1.0</td>
-                                    <td>OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Camino 1.5</td>
-                                    <td>OSX.3+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape 7.2</td>
-                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape Browser 8</td>
-                                    <td>Win 98SE+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Netscape Navigator 9</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.8</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Mozilla 1.0</td>
-                                    <td>Win 95+ / OSX.1+</td>
-                                    <td>1</td>
-                                    <td>A</td>
-                                </tr>
+
                             </tbody>
                         </table>
 

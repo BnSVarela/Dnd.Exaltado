@@ -24,7 +24,7 @@ namespace Dnd.Exaltado.Web.Controllers
         public IActionResult SearchPlayers()
         {
             var players = _playersService.SearchPlayers();
-            return PartialView("_PlayersPartial");
+            return PartialView("_PlayersPartial", players);
         }
     }
 }
