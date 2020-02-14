@@ -1,9 +1,11 @@
 ﻿@model Dnd.Exaltado.Players.Entity.Players
-@Html.Partial("_PlayersInsert")
+
+<div id="PlayersInsertDiv"></div>
+<div id="PlayersViewDiv"></div>
 
 <div class="card card-outline card-dark">
     <div class="card-header">
-        <a class="btn bg-gradient-success float-left" data-toggle="modal" data-target="#PlayersInsert">
+        <a class="btn bg-gradient-success float-left" id="btn-insert-player">
             <i class="fas fa-plus">
             </i>
             Add Player
@@ -36,7 +38,7 @@
 
                             }
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="#">
+                                    <a class="btn btn-primary btn-sm" id="btn-view-player">
                                         <i class="fas fa-folder">
                                         </i>
                                         View

@@ -8,10 +8,12 @@
     var Type = "";
     var DivClass = "";
     var InputClass = "form-control";
+    var Value = propertyInfo.GetValue(Model, null);
+    var ValueClass = "";
 
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
-    
+
     if (count == 1)
     {
         DivStyle = "margin-top:94px;";
@@ -57,9 +59,12 @@
                         Name = propertyInfoClass.Name.Replace("_", "");
                         Id = propertyInfoClass.Name;
 
+                        if (Value != null)
+                            ValueClass = propertyInfoClass.GetValue(Value, null);
+
                         <div class="@DivClass" style="@DivStyle">
                             <label for="@Id">@Name</label>
-                            <input type="@Type" class="@InputClass" id="@Id">
+                            <input type="@Type" class="@InputClass" id="@Id" value="@ValueClass">
                             <label for="@Id"></label>
                         </div>
                     }
@@ -70,7 +75,7 @@
         {
             <div class="@DivClass" style="@DivStyle">
                 <label for="@Id">@Name</label>
-                <input type="@Type" class="@InputClass" id="@Id">
+                <input type="@Type" class="@InputClass" id="@Id" value="@Value">
                 <label for="@Id"></label>
             </div>
         }

@@ -17,5 +17,17 @@ namespace Dnd.Exaltado.Players.Entity
         public string CharacterName { get; set; }
         [DataMember(Name = "_Id")]
         public int _Id { get; set; }
-    }    
+        [DataMember(Name = "_PlayersTeste")]
+        public PlayersTeste _PlayersTeste { get; set; }
+    }
+
+    [DataContract]
+    public class PlayersTeste
+    {
+        [DataMember(Name = "PlayerName")]
+        public string PlayerName { get; set; }
+        [DataMember(Name = "CharacterName")]
+        public string CharacterName { get; set; }
+    }
+
 }
