@@ -17,7 +17,10 @@
 
     $(document).on('click', '#btn-view-player', function (e) {
         e.preventDefault();
-        ViewPlayersPartialView();
+
+        var id = $(this).attr('value');
+        
+        ViewPlayersPartialView(id);
     });  
 
     const InsertPlayersPartialView = function () {
@@ -31,9 +34,8 @@
         });
     };     
 
-    const ViewPlayersPartialView = function () {
-
-        var url = "Players/ViewPlayersPartialView/1";
+    const ViewPlayersPartialView = function (id) {      
+        var url = "Players/ViewPlayersPartialView/" + id;
 
         $.get(url, function (data) {
             jQuery.noConflict();

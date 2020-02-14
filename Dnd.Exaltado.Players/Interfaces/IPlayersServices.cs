@@ -1,9 +1,11 @@
 ﻿
+using System.Collections.Generic;
+
 namespace Dnd.Exaltado.Players.Interfaces
 {
     public interface IPlayersServices
     {
-        Entity.Players SearchPlayers();
+        List<Entity.Players> SearchPlayers();
         Entity.Players SearchPlayers(int id);
     }
 }

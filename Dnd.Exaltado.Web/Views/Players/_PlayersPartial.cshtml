@@ -1,4 +1,9 @@
-﻿@model Dnd.Exaltado.Players.Entity.Players
+﻿@model List<Dnd.Exaltado.Players.Entity.Players>
+
+@{
+    var Id = "";
+    Dnd.Exaltado.Players.Entity.Players theadItens = new Dnd.Exaltado.Players.Entity.Players();
+ }
 
 <div id="PlayersInsertDiv"></div>
 <div id="PlayersViewDiv"></div>
@@ -21,43 +26,52 @@
 
                         <thead id="theadItens">
                             <tr role="row">
-                                @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
-                            {
-                                <th class="@propertyInfo.Name">@propertyInfo.Name</th>
-                            }
+                                @foreach (System.Reflection.PropertyInfo propertyInfo in theadItens.GetType().GetProperties())
+                                {
+                                    <th class="@propertyInfo.Name">@propertyInfo.Name</th>
+                                }
                                 <th style="width:195px"></th>
                             </tr>
 
                         </thead>
-
                         <tbody id="tbodyItens">
-                            <tr role="row">
-                                @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
+                            @foreach (Dnd.Exaltado.Players.Entity.Players players in Model)
                             {
-                                <td>@propertyInfo.GetValue(Model,null)</td>
 
+                                <tr role="row">
+                                    @foreach (System.Reflection.PropertyInfo propertyInfo in players.GetType().GetProperties())
+                                    {
+                                        <td>@propertyInfo.GetValue(players, null)</td>
+
+                                        if (propertyInfo.Name == "_Id")
+                                        {
+                                            Id = propertyInfo.GetValue(players, null).ToString();
+                                        }
+
+                                    }
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" id="btn-view-player" value="@Id">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+
+                                </tr>
                             }
-                                <td>
-                                    <a class="btn btn-primary btn-sm" id="btn-view-player">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-
                         </tbody>
-                    </table>
+                        </table>
 
                 </div>
             </div>
