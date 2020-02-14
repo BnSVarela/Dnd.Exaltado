@@ -23,21 +23,26 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_PlayersPartial", players);
         }
 
-        public IActionResult InsertPlayersPartialView()
+        public IActionResult InsertPlayerPartialView()
         {
             Players.Entity.Players players = new Players.Entity.Players();
             return PartialView("_PlayersInsert", players);
         }
 
-        public bool InsertPlayers([FromBody]Players.Entity.Players players)
+        public bool InsertPlayer([FromBody]Players.Entity.Players players)
         {
             return true;
         }
 
-        public IActionResult ViewPlayersPartialView(int id)
+        public IActionResult ViewPlayerPartialView(int id)
         {
             var players = _playersService.SearchPlayers(id);
             return PartialView("_PlayersView", players);
+        }
+
+        public bool DeletePlayer(int id)
+        {
+            return true;
         }
 
 

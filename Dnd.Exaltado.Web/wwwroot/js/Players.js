@@ -17,15 +17,21 @@
 
     $(document).on('click', '#btn-view-player', function (e) {
         e.preventDefault();
-
-        var id = $(this).attr('value');
-        
+        var id = $(this).attr('value');        
         ViewPlayersPartialView(id);
     });  
 
+    $(document).on('click', '#btn-delete-player', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        DeletePlayer(id);
+    }); 
+
+
+    
     const InsertPlayersPartialView = function () {
 
-        var url = "Players/InsertPlayersPartialView";
+        var url = "Players/InsertPlayerPartialView";
 
         $.get(url, function (data) {
             jQuery.noConflict();
@@ -35,7 +41,7 @@
     };     
 
     const ViewPlayersPartialView = function (id) {      
-        var url = "Players/ViewPlayersPartialView/" + id;
+        var url = "Players/ViewPlayerPartialView/" + id;
 
         $.get(url, function (data) {
             jQuery.noConflict();
@@ -45,6 +51,15 @@
         });
     };     
 
+    const DeletePlayer = function (id) {
+        var url = "Players/DeletePlayer/" + id;
+
+        $.get(url, function (data) {
+            if (data) {
+                window.location.reload();
+            }
+        });
+    };     
 
 
     const SearchPlayers = function () {
@@ -90,7 +105,7 @@
         console.log(json);
 
         $.ajax({
-            url: "Players/InsertPlayers",
+            url: "Players/InsertPlayer",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',
