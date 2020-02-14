@@ -3,7 +3,13 @@
     $(document).on('click', '#btn-search-player', function (e) {
         e.preventDefault();
         SearchPlayers();
-    });
+    });    
+
+    $(document).on('submit', '#PlayersInsert', function (e) {
+        e.preventDefault();
+        PlayerInsert();
+    });  
+
 
     const SearchPlayers = function () {
 
@@ -12,7 +18,7 @@
         $.get(url, function (data) {
             $('#partial-players').html(data);
 
-            var table = $('#tabela-players').DataTable();            
+            var table = $('#tabela-players').DataTable();
 
             var columnids = [];
 
@@ -21,8 +27,8 @@
                     var columnid = {};
 
                     columnid = index;
-                    columnids.push(columnid);                    
-                }               
+                    columnids.push(columnid);
+                }
             });
 
             table.destroy();
@@ -37,7 +43,15 @@
                 ]
             });
 
-            
+
         });
+    };  
+
+    const PlayerInsert = function () {
+
+        var json2 = GetJson();
+        console.log(json2);
     };
+
+  
 });

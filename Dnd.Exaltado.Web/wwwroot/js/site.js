@@ -1,4 +1,49 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const GetJson = function () {
+    var multiz = "";
+    var count = 0;
 
-// Write your JavaScript code.
+    $('input').each(function (index) {
+        if (index > 0) {
+            var valu = $(this).val();
+            var name = $(this).attr("id");
+            var parent = $(this).parent().parent().attr("id");
+
+            if (name !== undefined) {
+
+                if (parent !== undefined) {
+                    if (!multiz.includes(parent)) {
+                        multiz = multiz + '"' + parent + '" : [{';
+                        count = 1;
+                    }
+
+                    multiz = multiz + '"' + name + '"' + ' : ' + '"' + valu + '",';
+                }
+                else {
+                    if (count === 1) {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '}],';
+                        count = 0;
+                    }
+
+                    multiz = multiz + '"' + name + '"' + ' : ' + '"' + valu + '",';
+                }
+
+            }
+            else {
+                if (count === 1) {
+                    multiz = multiz.replace(/,\s*$/, "");
+                    multiz = multiz + '}],';
+                    count = 0;
+                }
+
+                multiz = multiz.replace(/,\s*$/, "");
+            }
+        }
+    });
+
+    var json = '{' + multiz + '}';
+
+    return json;
+};  
+
+

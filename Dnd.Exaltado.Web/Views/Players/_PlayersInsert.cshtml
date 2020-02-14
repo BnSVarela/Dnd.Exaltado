@@ -1,4 +1,4 @@
-﻿<div class="modal fade" tabindex="-1" role="dialog" id="PlayersInsert">
+﻿<form class="modal fade" tabindex="-1" role="dialog" id="PlayersInsert">
     <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +53,9 @@
                                         <div class="card-header">
                                             <b>@Name</b>
                                         </div>
-                                        <div class="card-body">
+
+                                        
+                                        <div class="card-body" id="@propertyInfo.PropertyType.Name.ToString()">
                                             @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                                             {
                                                 <div class="@DivClass">
@@ -82,8 +84,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Save changes</button>
+                <button type="submit" class="btn btn-success" form="PlayersInsert">Save changes</button>
             </div>
         </div>
     </div>
-</div>
+</form>
