@@ -45,6 +45,17 @@ namespace Dnd.Exaltado.Web.Controllers
             return true;
         }
 
+        public IActionResult EditPlayerPartialView(int id)
+        {
+            var players = _playersService.SearchPlayers(id);
+            return PartialView("_PlayersEdit", players);
+        }
+
+        public bool EditPlayer([FromBody]Players.Entity.Players players)
+        {
+            return true;
+        }
+
 
     }
 }

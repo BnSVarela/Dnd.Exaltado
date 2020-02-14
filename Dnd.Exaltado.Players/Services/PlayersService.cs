@@ -47,7 +47,7 @@ namespace Dnd.Exaltado.Players.Services
             {
                 players.PlayerName = "Player0";
                 players.CharacterName = "Char0";
-                players._Id = 1;
+                players._Id = 2;
 
                 playersTeste.CharacterName = "Char02";
                 playersTeste.PlayerName = "Player02";

@@ -27,7 +27,16 @@
         DeletePlayer(id);
     }); 
 
-
+    $(document).on('click', '#btn-edit-player', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        EditPlayersPartialView(id);
+    });  
+    
+    $(document).on('submit', '#PlayersEdit', function (e) {
+        e.preventDefault();
+        PlayerEdit();
+    });  
     
     const InsertPlayersPartialView = function () {
 
@@ -37,6 +46,18 @@
             jQuery.noConflict();
             $('#PlayersInsertDiv').html(data);
             $('#PlayersInsert').modal('show');
+            $('#DivId').hide();
+        });
+    };     
+
+    const EditPlayersPartialView = function (id) {
+        var url = "Players/EditPlayerPartialView/" + id;
+
+        $.get(url, function (data) {
+            jQuery.noConflict();
+            $('#PlayersEditDiv').html(data);
+            $('#PlayersEdit').modal('show');
+            $('#DivId').hide();
         });
     };     
 
@@ -47,7 +68,8 @@
             jQuery.noConflict();
             $('#PlayersViewDiv').html(data);
             $('#PlayersView').modal('show');
-            $('input', '#PlayersView').attr('readonly',true);
+            $('input', '#PlayersView').attr('readonly', true);
+            $('#DivId').hide();
         });
     };     
 
@@ -114,6 +136,29 @@
             success: function (data) {
                 if (data) {
                     $('#PlayersInsertClose').click();
+                }
+
+
+            }
+        });
+    };
+
+    const PlayerEdit = function () {
+
+        var json = GetJson();
+
+        console.log(json);
+
+        $.ajax({
+            url: "Players/EditPlayer",
+            type: "POST",
+            contentType: 'application/json',
+            accept: 'application/json',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data) {
+                    $('#PlayersEditClose').click();
                 }
 
 

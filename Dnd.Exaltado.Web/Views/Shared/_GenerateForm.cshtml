@@ -10,9 +10,16 @@
     var InputClass = "form-control";
     var Value = propertyInfo.GetValue(Model, null);
     var ValueClass = "";
+    var DivId = "";
 
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
+
+    if (Name == "Id")
+    {
+        DivId = "Div" + Name;
+    }
+
 
     if (count == 1)
     {
@@ -43,41 +50,39 @@
 
     };
 
-    if (Name != "Id")
+    if (@propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado"))
     {
-        if (@propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado"))
-        {
-            <div class="card card-outline card-dark">
-                <div class="card-header">
-                    <b>@Name</b>
-                </div>
-
-
-                <div class="card-body" id="@propertyInfo.PropertyType.Name.ToString()">
-                    @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
-                    {
-                        Name = propertyInfoClass.Name.Replace("_", "");
-                        Id = propertyInfoClass.Name;
-
-                        if (Value != null)
-                            ValueClass = propertyInfoClass.GetValue(Value, null);
-
-                        <div class="@DivClass" style="@DivStyle">
-                            <label for="@Id">@Name</label>
-                            <input type="@Type" class="@InputClass" id="@Id" value="@ValueClass">
-                            <label for="@Id"></label>
-                        </div>
-                    }
-                </div>
+        <div class="card card-outline card-dark">
+            <div class="card-header">
+                <b>@Name</b>
             </div>
-        }
-        else
-        {
-            <div class="@DivClass" style="@DivStyle">
-                <label for="@Id">@Name</label>
-                <input type="@Type" class="@InputClass" id="@Id" value="@Value">
-                <label for="@Id"></label>
+
+
+            <div class="card-body" id="@propertyInfo.PropertyType.Name.ToString()">
+                @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
+                {
+                    Name = propertyInfoClass.Name.Replace("_", "");
+                    Id = propertyInfoClass.Name;
+
+                    if (Value != null)
+                        ValueClass = propertyInfoClass.GetValue(Value, null);
+
+                    <div class="@DivClass" style="@DivStyle" id="@DivId">
+                        <label for="@Id">@Name</label>
+                        <input type="@Type" class="@InputClass" id="@Id" value="@ValueClass">
+                        <label for="@Id"></label>
+                    </div>
+                }
             </div>
-        }
+        </div>
     }
+    else
+    {
+        <div class="@DivClass" style="@DivStyle" id="@DivId">
+            <label for="@Id">@Name</label>
+            <input type="@Type" class="@InputClass" id="@Id" value="@Value">
+            <label for="@Id"></label>
+        </div>
+    }
+    
 }
