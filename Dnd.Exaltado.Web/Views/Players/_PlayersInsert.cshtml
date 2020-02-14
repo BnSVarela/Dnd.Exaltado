@@ -11,79 +11,14 @@
                     </div>
                     <div class="card-body">
 
-                        @foreach (System.Reflection.PropertyInfo propertyInfo in Model.GetType().GetProperties())
-                        {
-                            var Name = @propertyInfo.Name.Replace("_", "");
-
-                            var Type = "";
-                            var DivClass = "";
-                            var InputClass = "form-control";
-
-                            switch (propertyInfo.PropertyType.UnderlyingSystemType.ToString()) { 
-                                
-                                case "System.Int32":
-                                    Type = "number";
-                                    break;
-
-                                case "System.DateTime":
-                                    Type = "date";
-                                    break;
-
-                                case "System.Boolean":
-                                    Type = "checkbox";
-                                    DivClass = "switch__container float-left";
-                                    InputClass = "switch switch--shadow";
-                                    break;
-
-                                default :
-                                    Type = "text";
-                                    break;
-                        
-                            };                        
-
-                            if (Name != "Id")
-                            {
-                                //Type=Date
-                                //Type=Number
-                                //Type=Text
-
-                                if (@propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado"))
-                                {
-                                    <div class="card card-outline card-dark">
-                                        <div class="card-header">
-                                            <b>@Name</b>
-                                        </div>
-
-                                        
-                                        <div class="card-body" id="@propertyInfo.PropertyType.Name.ToString()">
-                                            @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
-                                            {
-                                                <div class="@DivClass">
-                                                    <label for="@Name">@Name</label>
-                                                    <input type="@Type" class="@InputClass" id="@Name">
-                                                    <label for="@Name"></label>
-                                                </div>
-                                            }
-                                        </div>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="@DivClass">
-                                        <label for="@Name">@Name</label>
-                                        <input type="@Type" class="@InputClass" id="@Name">
-                                        <label for="@Name"></label>
-                                    </div>                                    
-                                }
-                            }
-                        }
+                        @Html.Partial("_GenerateForm")
 
                     </div>
                 </div>
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="PlayersInsertClose" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success" form="PlayersInsert">Save changes</button>
             </div>
         </div>

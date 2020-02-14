@@ -23,9 +23,9 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_PlayersPartial", players);
         }
 
-        public IActionResult InsertPlayers([FromBody]Players.Entity.Players players)
+        public bool InsertPlayers([FromBody]Players.Entity.Players players)
         {
-            return null;
+            return true;
         }
     }
 }

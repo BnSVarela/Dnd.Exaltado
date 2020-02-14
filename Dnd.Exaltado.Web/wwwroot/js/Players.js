@@ -49,17 +49,20 @@
 
     const PlayerInsert = function () {
 
-       var json = GetJson();
+        var json = GetJson();
+
+        console.log(json);
 
         $.ajax({
             url: "Players/InsertPlayers",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',
+            dataType: "json",
             data: json,
             success: function (data) {
                 if (data) {
-                    debugger;
+                    $('#PlayersInsertClose').click();
                 }
 
 

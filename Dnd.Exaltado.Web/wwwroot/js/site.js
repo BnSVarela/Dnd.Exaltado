@@ -4,9 +4,17 @@
 
     $('input').each(function (index) {
         if (index > 0) {
-            var valu = $(this).val();
+            var value = $(this).val();
+            var chk = $(this).is(":checked");
             var name = $(this).attr("id");
+            var inputType = $(this).attr("type");
             var parent = $(this).parent().parent().attr("id");
+
+            if (value === "on")
+                value = chk;
+
+            if (value === "")
+                value = null;
 
             if (name !== undefined) {
 
@@ -16,7 +24,11 @@
                         count = 1;
                     }
 
-                    multiz = multiz + '"' + name + '"' + ' : ' + '"' + valu + '",';
+                    if (inputType !== "text" && inputType !== "date") {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    } else {
+                        multiz = multiz + '"' + name + '"' + ' : ' + '"' + value + '",';
+                    }
                 }
                 else {
                     if (count === 1) {
@@ -25,7 +37,12 @@
                         count = 0;
                     }
 
-                    multiz = multiz + '"' + name + '"' + ' : ' + '"' + valu + '",';
+                    if (inputType !== "text" && inputType !== "date") {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    } else {
+                        multiz = multiz + '"' + name + '"' + ' : ' + '"' + value + '",';
+                    }
+                    
                 }
 
             }
@@ -41,9 +58,11 @@
         }
     });
 
-    var json = '{' + multiz + '}';
+    var json = '{' + multiz + '}';   
 
     return json;
 };  
+
+
 
 

@@ -15,14 +15,14 @@ namespace Dnd.Exaltado.Players.Entity
         public string PlayerName { get; set; }
         [DataMember(Name = "CharacterName")]
         public string CharacterName { get; set; }
-        [DataMember(Name = "_RegistrationDate")]
-        public DateTime _RegistrationDate { get; set; }
         [DataMember(Name = "_Id")]
         public int _Id { get; set; }
         [DataMember(Name = "_XX")]
         public bool _XX { get; set; }
         [DataMember(Name = "_IdX")]
         public int _IdX { get; set; }
+        [DataMember(Name = "_DateTeste")]
+        public DateTime _DateTeste { get; set; }
         [DataMember(Name = "_PlayersTeste")]
         public PlayersTeste _PlayersTeste { get; set; }
         [DataMember(Name = "PlayerName1")]
