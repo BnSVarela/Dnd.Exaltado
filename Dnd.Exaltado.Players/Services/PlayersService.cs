@@ -7,7 +7,7 @@ namespace Dnd.Exaltado.Players.Services
         public Entity.Players SearchPlayers()
         {
             Entity.Players players = new Entity.Players();
-            players.PlayerName = "Teste";
+            players.PlayerName = "Player";
             players.CharacterName = "Char";
             players._Id = 1;
 

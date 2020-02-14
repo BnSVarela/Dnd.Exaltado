@@ -39,6 +39,7 @@
             jQuery.noConflict();
             $('#PlayersViewDiv').html(data);
             $('#PlayersView').modal('show');
+            $('input', '#PlayersView').attr('readonly',true);
         });
     };     
 
