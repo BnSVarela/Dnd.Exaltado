@@ -49,8 +49,22 @@
 
     const PlayerInsert = function () {
 
-        var json2 = GetJson();
-        console.log(json2);
+       var json = GetJson();
+
+        $.ajax({
+            url: "Players/InsertPlayers",
+            type: "POST",
+            contentType: 'application/json',
+            accept: 'application/json',
+            data: json,
+            success: function (data) {
+                if (data) {
+                    debugger;
+                }
+
+
+            }
+        });
     };
 
   

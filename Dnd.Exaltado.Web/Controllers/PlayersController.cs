@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Dnd.Exaltado.Players.Interfaces;
+﻿using Dnd.Exaltado.Players.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dnd.Exaltado.Web.Controllers
@@ -25,6 +21,11 @@ namespace Dnd.Exaltado.Web.Controllers
         {
             var players = _playersService.SearchPlayers();
             return PartialView("_PlayersPartial", players);
+        }
+
+        public IActionResult InsertPlayers([FromBody]Players.Entity.Players players)
+        {
+            return null;
         }
     }
 }
