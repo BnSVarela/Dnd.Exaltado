@@ -1,6 +1,8 @@
 ﻿const GetJson = function () {
     var multiz = "";
-    var count = 0;
+    var OldObj = "";
+    var OldGrid = "";
+    var GridFirstProp = "";
 
     $('input').each(function (index) {
         if (index > 0) {
@@ -8,7 +10,15 @@
             var chk = $(this).is(":checked");
             var name = $(this).attr("id");
             var inputType = $(this).attr("type");
-            var parent = $(this).parent().parent().attr("id");
+            var IdObject = $(this).parent().parent().attr("id");
+
+            var IdGrid = $(this).parent().parent().parent().parent().parent().parent().parent().parent().attr("id");
+
+            if (IdGrid !== undefined) {
+                if (IdGrid.includes("Div")) {
+                    IdGrid = undefined;
+                }
+            }
 
             if (value === "on")
                 value = chk;
@@ -18,50 +28,131 @@
 
             if (name !== undefined) {
 
-                if (parent !== undefined) {
-                    if (!multiz.includes(parent)) {
-                        multiz = multiz + '"' + parent + '" : {'; 
-                        count = 1;
+                if (IdObject !== undefined) {
+
+                    if (OldObj !== IdObject && OldObj !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '},';
                     }
 
-                    if (inputType !== "text" && inputType !== "date") {
+                    if (OldGrid !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '}],';
+                        OldGrid = "";
+                    }
+
+                    if (GridFirstProp !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '},{';
+                        GridFirstProp = "";
+                    }
+
+                    if (!multiz.includes(IdObject)) {
+                        multiz = multiz + '"' + IdObject + '" : {';
+                        OldObj = IdObject;
+                    }
+
+                    if (value === null) {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    }
+                    else if (inputType !== "text" && inputType !== "date") {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    } else {
+                        multiz = multiz + '"' + name + '"' + ' : ' + '"' + value + '",';
+                    }
+                }
+                else if (IdGrid !== undefined) {
+
+                    if (OldObj !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '},';
+                        OldObj = "";
+                    }
+
+                    if (OldGrid === IdGrid && GridFirstProp === name) {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '},{';
+                        GridFirstProp = "";
+
+                    }
+
+                    if (OldGrid !== IdGrid && OldGrid !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '}],';
+                    }
+
+                    if (!multiz.includes(IdGrid)) {
+                        multiz = multiz + '"' + IdGrid + '" : [{';
+                        OldGrid = IdGrid;
+                        GridFirstProp = name;
+                    }
+
+                    if (value === null) {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    }
+                    else if (inputType !== "text" && inputType !== "date") {
                         multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
                     } else {
                         multiz = multiz + '"' + name + '"' + ' : ' + '"' + value + '",';
                     }
                 }
                 else {
-                    if (count === 1) {
+                    if (OldObj !== "") {
                         multiz = multiz.replace(/,\s*$/, "");
                         multiz = multiz + '},';
-                        count = 0;
+                        OldObj = "";
                     }
 
-                    if (inputType !== "text" && inputType !== "date") {
+                    if (GridFirstProp !== "") {
+                        multiz = multiz.replace(/,\s*$/, "");
+                        multiz = multiz + '},{';
+                        GridFirstProp = "";
+                    }
+
+                    if (value === null) {
+                        multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
+                    }
+                    else if (inputType !== "text" && inputType !== "date"){
                         multiz = multiz + '"' + name + '"' + ' : ' + value + ',';
                     } else {
                         multiz = multiz + '"' + name + '"' + ' : ' + '"' + value + '",';
                     }
-                    
+
                 }
 
             }
+
             else {
-                if (count === 1) {
+
+                if (GridFirstProp !== "" && OldGrid === "") {
                     multiz = multiz.replace(/,\s*$/, "");
                     multiz = multiz + '},';
-                    count = 0;
+                    GridFirstProp = "";
                 }
+
+                if (OldObj !== "") {
+                    multiz = multiz.replace(/,\s*$/, "");
+                    multiz = multiz + '},';
+                    OldObj = "";
+                }
+
+                if (OldGrid !== "") {
+                    multiz = multiz.replace(/,\s*$/, "");
+                    multiz = multiz + '}],';
+                    OldGrid = "";
+                }
+
+
 
                 multiz = multiz.replace(/,\s*$/, "");
             }
         }
     });
 
-    var json = '{' + multiz + '}';   
+    var json = '{' + multiz + '}';
 
     return json;
-};  
+};
 
 const AddRow = function (table) {
 

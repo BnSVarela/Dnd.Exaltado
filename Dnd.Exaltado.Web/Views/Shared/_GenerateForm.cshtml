@@ -133,9 +133,6 @@
                                                     @foreach (System.Reflection.PropertyInfo propertyInfoGridItensArray in ValueArray.GetType().GetProperties())
                                                     {
                                                         ValueGrid = propertyInfoGridItensArray.GetValue(ValueArray);
-
-
-                                                        Name = propertyInfoGridItensArray.Name.Replace("_", "");
                                                         Id = propertyInfoGridItensArray.Name;
 
                                                         switch (propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString())
@@ -168,6 +165,8 @@
                                         {
                                             foreach (System.Reflection.PropertyInfo propertyInfoGridItens in propertyInfoGrid.PropertyType.UnderlyingSystemType.GetProperties())
                                             {
+                                                Id = propertyInfoGridItens.Name;
+
                                                 switch (propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString())
                                                 {
 
