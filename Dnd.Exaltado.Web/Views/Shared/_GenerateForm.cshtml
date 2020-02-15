@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     var count = 0;
 }
 
@@ -8,10 +8,14 @@
     var Type = "";
     var DivClass = "";
     var InputClass = "form-control";
-    var Value = propertyInfo.GetValue(Model, null);
-    var ValueClass = "";
     var DivId = "";
     var CardId = "";
+    var GridName = "";
+    var GridButtonId = "";
+    var GridTabelId = "";
+    var Value = propertyInfo.GetValue(Model, null);
+    var ValueClass = (dynamic)null;
+    var ValueGrid = (dynamic)null;
 
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
@@ -51,7 +55,7 @@
 
     };
 
-    if (@propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado"))
+    if (propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("Dnd.Exaltado") && !propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("System.Collections.Generic.List"))
     {
         <div class="card card-outline card-dark">
             <div class="card-header">
@@ -59,12 +63,12 @@
             </div>
 
             @{
-              CardId = @propertyInfo.PropertyType.Name.ToString();
+                CardId = propertyInfo.PropertyType.Name.ToString();
             }
-            
+
 
             <div class="card-body" id="@CardId">
-                @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
+                @foreach (System.Reflection.PropertyInfo propertyInfoClass in propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                 {
                     Name = propertyInfoClass.Name.Replace("_", "");
                     Id = propertyInfoClass.Name;
@@ -75,19 +79,136 @@
                     <div class="@DivClass" style="@DivStyle" id="@DivId">
                         <label for="@Id">@Name</label>
                         <input type="@Type" class="@InputClass" id="@Id" value="@ValueClass">
-                        <label for="@Id"></label>
+                        <label></label>
                     </div>
                 }
             </div>
         </div>
     }
-    else
+    else if (propertyInfo.PropertyType.UnderlyingSystemType.ToString().Contains("System.Collections.Generic.List"))
     {
-        <div class="@DivClass" style="@DivStyle" id="@DivId">
-            <label for="@Id">@Name</label>
-            <input type="@Type" class="@InputClass" id="@Id" value="@Value">
-            <label for="@Id"></label>
-        </div>
+        GridName = propertyInfo.PropertyType.UnderlyingSystemType.GetProperties()[2].PropertyType.Name.ToString();
+        GridButtonId = "btn" + GridName;
+        GridTabelId = "table" + GridName;
+
+        <div id="@GridName">
+            <label for="@GridTabelId">@GridName.Replace("_", "")</label>
+            <button type="button" id="@GridButtonId" class="btn btn-outline-dark float-right">Add Line</button>
+
+            <div class="dataTables_wrapper dt-bootstrap4">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="@GridTabelId" class="table table-bordered table-striped dataTable" role="grid" data-toggle="data-table">
+
+                            <thead>
+                                <tr role="row">
+                                    @foreach (System.Reflection.PropertyInfo propertyInfoGrid in propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
+                                    {
+                                        if (!propertyInfoGrid.PropertyType.FullName.Contains("System"))
+                                        {
+                                            @foreach (System.Reflection.PropertyInfo propertyInfoGridItens in propertyInfoGrid.PropertyType.UnderlyingSystemType.GetProperties())
+                                            {
+                                                <th class="@propertyInfoGridItens.Name">@propertyInfoGridItens.Name</th>
+                                            }
+
+                                        }
+
+                                    }
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (System.Reflection.PropertyInfo propertyInfoGrid in propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
+                                {
+                                    if (!propertyInfoGrid.PropertyType.FullName.Contains("System"))
+                                    {
+                                        if (Value != null)
+                                        {
+                                            foreach (var ValueArray in Value)
+                                            {
+                                                <tr role="row">
+                                                    @foreach (System.Reflection.PropertyInfo propertyInfoGridItensArray in ValueArray.GetType().GetProperties())
+                                                    {
+                                                        ValueGrid = propertyInfoGridItensArray.GetValue(ValueArray);
+
+
+                                                        Name = propertyInfoGridItensArray.Name.Replace("_", "");
+                                                        Id = propertyInfoGridItensArray.Name;
+
+                                                        switch (propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString())
+                                                        {
+
+                                                            case "System.Int32":
+                                                                Type = "number";
+                                                                break;
+
+                                                            case "System.DateTime":
+                                                                Type = "date";
+                                                                break;
+
+                                                            case "System.Boolean":
+                                                                Type = "checkbox";
+                                                                break;
+
+                                                            default:
+                                                                Type = "text";
+                                                                break;
+
+                                                        }
+
+                                                        <td><input type="@Type" class="@InputClass" id="@Id" value="@ValueGrid"></td>
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            foreach (System.Reflection.PropertyInfo propertyInfoGridItens in propertyInfoGrid.PropertyType.UnderlyingSystemType.GetProperties())
+                                            {
+                                                switch (propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString())
+                                                {
+
+                                                    case "System.Int32":
+                                                        Type = "number";
+                                                        break;
+
+                                                    case "System.DateTime":
+                                                        Type = "date";
+                                                        break;
+
+                                                    case "System.Boolean":
+                                                        Type = "checkbox";
+                                                        break;
+
+                                                    default:
+                                                        Type = "text";
+                                                        break;
+
+                                                }
+
+                                            <td><input type="@Type" class="@InputClass" id="@Id"></td>
+                                        }
+                                    }
+                                }
+                            }
+                                </tbody>
+                            </table>
+                            <label>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="@DivClass" style="@DivStyle" id="@DivId">
+                <label for="@Id">@Name</label>
+                <input type="@Type" class="@InputClass" id="@Id" value="@Value">
+                <label></label>
+            </div>
+        }
+
     }
-    
-}

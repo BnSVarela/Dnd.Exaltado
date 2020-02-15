@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{039FEB1D-7
 		Estrutura.txt = Estrutura.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnd.Exaltado.Players", "Dnd.Exaltado.Players\Dnd.Exaltado.Players.csproj", "{9D788544-A968-4BCA-B295-AA4BF4E47C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dnd.Exaltado.Players", "Dnd.Exaltado.Players\Dnd.Exaltado.Players.csproj", "{9D788544-A968-4BCA-B295-AA4BF4E47C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
