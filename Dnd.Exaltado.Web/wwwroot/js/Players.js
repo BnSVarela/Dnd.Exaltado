@@ -12,7 +12,8 @@
 
     $(document).on('click', '#btn-insert-player', function (e) {
         e.preventDefault();
-        InsertPlayersPartialView();
+        var id = $(this).attr('value');
+        InsertPlayersPartialView(id);
     });  
 
     $(document).on('click', '#btn-view-player', function (e) {
@@ -38,7 +39,8 @@
         PlayerEdit();
     });  
     
-    const InsertPlayersPartialView = function () {
+    const InsertPlayersPartialView = function (id) {
+        var Div = "#DivId_" + id;
 
         var url = "Players/InsertPlayerPartialView";
 
@@ -46,22 +48,26 @@
             jQuery.noConflict();
             $('#PlayersInsertDiv').html(data);
             $('#PlayersInsert').modal('show');
-            $('#DivId').hide();
+            $(Div, '#PlayersInsert').hide();
         });
     };     
 
     const EditPlayersPartialView = function (id) {
+        var Div = "#DivId_" + id;
+
         var url = "Players/EditPlayerPartialView/" + id;
 
         $.get(url, function (data) {
             jQuery.noConflict();
             $('#PlayersEditDiv').html(data);
             $('#PlayersEdit').modal('show');
-            $('#DivId').hide();
+            $(Div, '#PlayersEdit').hide();
         });
     };     
 
     const ViewPlayersPartialView = function (id) {      
+        var Div = "#DivId_" + id;
+
         var url = "Players/ViewPlayerPartialView/" + id;
 
         $.get(url, function (data) {
@@ -69,7 +75,7 @@
             $('#PlayersViewDiv').html(data);
             $('#PlayersView').modal('show');
             $('input', '#PlayersView').attr('readonly', true);
-            $('#DivId').hide();
+            $(Div, '#PlayersView').hide();
         });
     };     
 
@@ -146,7 +152,7 @@
     const PlayerEdit = function () {
 
         var json = GetJson();
-
+        
         console.log(json);
 
         $.ajax({

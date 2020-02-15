@@ -20,7 +20,7 @@
 
                 if (parent !== undefined) {
                     if (!multiz.includes(parent)) {
-                        multiz = multiz + '"' + parent + '" : [{';
+                        multiz = multiz + '"' + parent + '" : {'; 
                         count = 1;
                     }
 
@@ -33,7 +33,7 @@
                 else {
                     if (count === 1) {
                         multiz = multiz.replace(/,\s*$/, "");
-                        multiz = multiz + '}],';
+                        multiz = multiz + '},';
                         count = 0;
                     }
 
@@ -49,7 +49,7 @@
             else {
                 if (count === 1) {
                     multiz = multiz.replace(/,\s*$/, "");
-                    multiz = multiz + '}],';
+                    multiz = multiz + '},';
                     count = 0;
                 }
 

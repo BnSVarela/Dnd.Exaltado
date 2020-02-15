@@ -11,13 +11,14 @@
     var Value = propertyInfo.GetValue(Model, null);
     var ValueClass = "";
     var DivId = "";
+    var CardId = "";
 
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
 
     if (Name == "Id")
     {
-        DivId = "Div" + Name;
+        DivId = "Div" + Name + "_" + Value;
     }
 
 
@@ -57,8 +58,14 @@
                 <b>@Name</b>
             </div>
 
+            @{
+              CardId = "_" + @propertyInfo.PropertyType.Name.ToString();
 
-            <div class="card-body" id="@propertyInfo.PropertyType.Name.ToString()">
+              //CardId = @propertyInfo.PropertyType.Name.ToString();
+            }
+            
+
+            <div class="card-body" id="@CardId">
                 @foreach (System.Reflection.PropertyInfo propertyInfoClass in @propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                 {
                     Name = propertyInfoClass.Name.Replace("_", "");

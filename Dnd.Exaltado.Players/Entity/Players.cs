@@ -24,10 +24,10 @@ namespace Dnd.Exaltado.Players.Entity
     [DataContract]
     public class PlayersTeste
     {
-        [DataMember(Name = "PlayerName")]
-        public string PlayerName { get; set; }
-        [DataMember(Name = "CharacterName")]
-        public string CharacterName { get; set; }
+        [DataMember(Name = "PlayerName1")]
+        public string PlayerName1 { get; set; }
+        [DataMember(Name = "CharacterName1")]
+        public string CharacterName1 { get; set; }
     }
 
 }
