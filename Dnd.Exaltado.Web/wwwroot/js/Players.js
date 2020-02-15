@@ -3,42 +3,42 @@
     $(document).on('click', '#btn-search-player', function (e) {
         e.preventDefault();
         SearchPlayers();
-    });    
+    });
 
     $(document).on('submit', '#PlayersInsert', function (e) {
         e.preventDefault();
         PlayerInsert();
-    });  
+    });
 
     $(document).on('click', '#btn-insert-player', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
         InsertPlayersPartialView(id);
-    });  
+    });
 
     $(document).on('click', '#btn-view-player', function (e) {
         e.preventDefault();
-        var id = $(this).attr('value');        
+        var id = $(this).attr('value');
         ViewPlayersPartialView(id);
-    });  
+    });
 
     $(document).on('click', '#btn-delete-player', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
         DeletePlayer(id);
-    }); 
+    });
 
     $(document).on('click', '#btn-edit-player', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
         EditPlayersPartialView(id);
-    });  
-    
+    });
+
     $(document).on('submit', '#PlayersEdit', function (e) {
         e.preventDefault();
         PlayerEdit();
-    });  
-    
+    });
+
     const InsertPlayersPartialView = function (id) {
         var Div = "#DivId_" + id;
 
@@ -49,8 +49,13 @@
             $('#PlayersInsertDiv').html(data);
             $('#PlayersInsert').modal('show');
             $(Div, '#PlayersInsert').hide();
+
+            $('button', '#PlayersInsert .custom-grid').click(function () {
+                var table = '#' + $(this).attr('id').replace('btn', 'table');
+                AddRow(table);
+            });
         });
-    };     
+    };
 
     const EditPlayersPartialView = function (id) {
         var Div = "#DivId_" + id;
@@ -62,10 +67,15 @@
             $('#PlayersEditDiv').html(data);
             $('#PlayersEdit').modal('show');
             $(Div, '#PlayersEdit').hide();
-        });
-    };     
 
-    const ViewPlayersPartialView = function (id) {      
+            $('button', '#PlayersEdit .custom-grid').click(function () {
+                var table = '#' + $(this).attr('id').replace('btn', 'table');
+                AddRow(table);
+            });
+        });
+    };
+
+    const ViewPlayersPartialView = function (id) {
         var Div = "#DivId_" + id;
 
         var url = "Players/ViewPlayerPartialView/" + id;
@@ -76,8 +86,9 @@
             $('#PlayersView').modal('show');
             $('input', '#PlayersView').attr('readonly', true);
             $(Div, '#PlayersView').hide();
+            $('button', '#PlayersView .custom-grid').hide();
         });
-    };     
+    };
 
     const DeletePlayer = function (id) {
         var url = "Players/DeletePlayer/" + id;
@@ -87,7 +98,7 @@
                 window.location.reload();
             }
         });
-    };     
+    };
 
 
     const SearchPlayers = function () {
@@ -124,7 +135,7 @@
 
 
         });
-    };  
+    };
 
     const PlayerInsert = function () {
 
@@ -152,7 +163,7 @@
     const PlayerEdit = function () {
 
         var json = GetJson();
-        
+
         console.log(json);
 
         $.ajax({
@@ -172,5 +183,5 @@
         });
     };
 
-  
+
 });

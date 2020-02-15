@@ -63,6 +63,11 @@
     return json;
 };  
 
+const AddRow = function (table) {
 
+    var $mytable = $(table).find("tbody");
+    $last_row = $mytable.find("tr:last");
+    $new_row = $last_row.clone().find('input').val(null).end();
+    $last_row.after($new_row);
 
-
+};

@@ -13,6 +13,7 @@
     var GridName = "";
     var GridButtonId = "";
     var GridTabelId = "";
+    var TableCustomClass = "";
     var Value = propertyInfo.GetValue(Model, null);
     var ValueClass = (dynamic)null;
     var ValueGrid = (dynamic)null;
@@ -90,8 +91,9 @@
         GridName = propertyInfo.PropertyType.UnderlyingSystemType.GetProperties()[2].PropertyType.Name.ToString();
         GridButtonId = "btn" + GridName;
         GridTabelId = "table" + GridName;
+        TableCustomClass = "custom" + GridTabelId;
 
-        <div id="@GridName">
+        <div id="@GridName" class="custom-grid">
             <label for="@GridTabelId">@GridName.Replace("_", "")</label>
             <button type="button" id="@GridButtonId" class="btn btn-outline-dark float-right">Add Line</button>
 
@@ -99,7 +101,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="@GridTabelId" class="table table-bordered table-striped dataTable" role="grid" data-toggle="data-table">
+                        <table id="@GridTabelId" class="table table-bordered table-striped dataTable @TableCustomClass" role="grid" data-toggle="data-table">
 
                             <thead>
                                 <tr role="row">
