@@ -30,7 +30,7 @@ namespace Dnd.Exaltado.Players.Services
         public Entity.Players SearchPlayers(int id)
         {
             Entity.Players players = new Entity.Players();
-            Entity.PlayersTeste playersTeste = new Entity.PlayersTeste();
+            Entity._PlayersTeste playersTeste = new Entity._PlayersTeste();
             if (id == 1) 
             {                  
                 players.PlayerName = "Player";
