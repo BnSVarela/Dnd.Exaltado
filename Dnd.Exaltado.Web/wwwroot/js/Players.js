@@ -51,7 +51,7 @@
 
             $('button', '#PlayersInsert .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
-                AddRow(table);
+                AddRow(table, '#PlayersInsert .custom-grid');
             });
         });
     };
@@ -69,7 +69,7 @@
 
             $('button', '#PlayersEdit .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
-                AddRow(table);
+                AddRow(table, '#PlayersEdit .custom-grid');
             });
         });
     };
@@ -132,8 +132,9 @@
                 ]
             });
 
-
         });
+
+        
     };
 
     const PlayerInsert = function () {
