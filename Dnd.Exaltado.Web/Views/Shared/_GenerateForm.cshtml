@@ -21,9 +21,13 @@
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
 
-    if (Name == "Id")
+    if (Name == "Id" && Value != null)
     {
         DivId = "Div" + Name + "_" + Value;
+
+    } else if (Name == "Id")
+    {
+        DivId = "DivId";
     }
 
 
@@ -33,7 +37,17 @@
         count = 0;
     };
 
-    switch (propertyInfo.PropertyType.UnderlyingSystemType.ToString())
+    var TypeSwitch = propertyInfo.PropertyType.UnderlyingSystemType.ToString();
+
+    if (TypeSwitch.Contains("Nullable")) {
+
+        var Start = TypeSwitch.IndexOf("[", 0) + "[".Length;
+        var End = TypeSwitch.IndexOf("]", Start);
+        TypeSwitch = TypeSwitch.Substring(Start, End - Start);
+
+    };
+
+    switch (TypeSwitch)
     {
 
         case "System.Int32":
@@ -68,9 +82,43 @@
             }
 
 
+
+
             <div class="card-body" id="@CardId">
                 @foreach (System.Reflection.PropertyInfo propertyInfoClass in propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                 {
+
+                    var TypeSwitchClass = propertyInfoClass.PropertyType.UnderlyingSystemType.ToString();
+
+                    if (TypeSwitchClass.Contains("Nullable")) {
+
+                        var Start = TypeSwitchClass.IndexOf("[", 0) + "[".Length;
+                        var End = TypeSwitchClass.IndexOf("]", Start);
+                        TypeSwitchClass = TypeSwitchClass.Substring(Start, End - Start);
+
+                    };
+
+                    switch (TypeSwitchClass)
+                    {
+
+                        case "System.Int32":
+                            Type = "number";
+                            break;
+
+                        case "System.DateTime":
+                            Type = "date";
+                            break;
+
+                        case "System.Boolean":
+                            Type = "checkbox";
+                            break;
+
+                        default:
+                            Type = "text";
+                            break;
+
+                    }
+
                     Name = propertyInfoClass.Name.Replace("_", "");
                     Id = propertyInfoClass.Name;
 
@@ -135,7 +183,18 @@
                                                         ValueGrid = propertyInfoGridItensArray.GetValue(ValueArray);
                                                         Id = propertyInfoGridItensArray.Name;
 
-                                                        switch (propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString())
+
+                                                        var TypeSwitchGrid = propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString();
+
+                                                        if (TypeSwitchGrid.Contains("Nullable")) {
+
+                                                            var Start = TypeSwitchGrid.IndexOf("[", 0) + "[".Length;
+                                                            var End = TypeSwitchGrid.IndexOf("]", Start);
+                                                            TypeSwitchGrid = TypeSwitchGrid.Substring(Start, End - Start);
+
+                                                        };
+
+                                                        switch (TypeSwitchGrid)
                                                         {
 
                                                             case "System.Int32":
@@ -167,7 +226,17 @@
                                             {
                                                 Id = propertyInfoGridItens.Name;
 
-                                                switch (propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString())
+                                                var TypeSwitchGrid = propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString();
+
+                                                if (TypeSwitchGrid.Contains("Nullable")) {
+
+                                                    var Start = TypeSwitchGrid.IndexOf("[", 0) + "[".Length;
+                                                    var End = TypeSwitchGrid.IndexOf("]", Start);
+                                                    TypeSwitchGrid = TypeSwitchGrid.Substring(Start, End - Start);
+
+                                                };
+
+                                                switch (TypeSwitchGrid)
                                                 {
 
                                                     case "System.Int32":

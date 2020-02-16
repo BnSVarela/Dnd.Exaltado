@@ -54,8 +54,6 @@ namespace Dnd.Exaltado.Players.Services
 
                 playersGridList.Add(playersGrid);
 
-                players._PlayersTeste = playersTeste;
-                //players._PlayersGrid = playersGridList;
             }
 
             if (id == 2)
@@ -73,8 +71,6 @@ namespace Dnd.Exaltado.Players.Services
 
                 playersGridList.Add(playersGrid);
 
-                players._PlayersTeste = playersTeste;
-                //players._PlayersGrid = playersGridList;
             }
 
             return players;

@@ -12,8 +12,7 @@
 
     $(document).on('click', '#btn-insert-player', function (e) {
         e.preventDefault();
-        var id = $(this).attr('value');
-        InsertPlayersPartialView(id);
+        InsertPlayersPartialView();
     });
 
     $(document).on('click', '#btn-view-player', function (e) {
@@ -39,8 +38,8 @@
         PlayerEdit();
     });
 
-    const InsertPlayersPartialView = function (id) {
-        var Div = "#DivId_" + id;
+    const InsertPlayersPartialView = function () {
+        var Div = "#DivId";
 
         var url = "Players/InsertPlayerPartialView";
 
@@ -139,7 +138,7 @@
 
     const PlayerInsert = function () {
 
-        var json = GetJson();
+        var json = GetJson("#PlayersInsert");
 
         console.log(json);
 
@@ -162,7 +161,7 @@
 
     const PlayerEdit = function () {
 
-        var json = GetJson();
+        var json = GetJson("#PlayersEdit");
 
         console.log(json);
 
