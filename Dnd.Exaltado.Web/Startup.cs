@@ -1,3 +1,6 @@
+using Dnd.Exaltado.CrossCutting.Config;
+using Dnd.Exaltado.Infra.DB.Interface;
+using Dnd.Exaltado.Infra.DB.Services;
 using Dnd.Exaltado.Players.Interfaces;
 using Dnd.Exaltado.Players.Services;
 using Microsoft.AspNetCore.Builder;
@@ -22,7 +25,15 @@ namespace Dnd.Exaltado.Web
         {
             services.AddControllersWithViews();
 
+            services.AddSingleton(ConfigBuilder.BuildAppSettings());
+
+            services.AddSingleton<IDBConfig, DBConfig>();
+            services.AddSingleton<IDBService, DBService>();         
+
+            
+
             services.AddSingleton<IPlayersServices, PlayersService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -32,7 +32,7 @@ namespace Dnd.Exaltado.Web.Controllers
 
         public bool InsertPlayer([FromBody]Players.Entity.Players players)
         {
-            return true;
+            return _playersService.InsertPlayer(players);
         }
 
         public IActionResult ViewPlayerPartialView(int id)
@@ -43,7 +43,7 @@ namespace Dnd.Exaltado.Web.Controllers
 
         public bool DeletePlayer(int id)
         {
-            return true;
+            return _playersService.DeletePlayer(id);
         }
 
         public IActionResult EditPlayerPartialView(int id)
@@ -54,7 +54,7 @@ namespace Dnd.Exaltado.Web.Controllers
 
         public bool EditPlayer([FromBody]Players.Entity.Players players)
         {
-            return true;
+            return _playersService.EditPlayer(players);
         }
 
 

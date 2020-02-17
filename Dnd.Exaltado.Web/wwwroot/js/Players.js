@@ -151,6 +151,7 @@
             success: function (data) {
                 if (data) {
                     $('#PlayersInsertClose').click();
+                    window.location.reload();
                 }
 
 
@@ -174,6 +175,7 @@
             success: function (data) {
                 if (data) {
                     $('#PlayersEditClose').click();
+                    window.location.reload();
                 }
 
 

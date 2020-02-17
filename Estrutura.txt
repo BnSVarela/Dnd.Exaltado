@@ -1,7 +1,7 @@
 1 - Front
  a. Função de armazenar o MVC do front
 2 - Back
- a. Função de gerar as API com a logica para o front
+ a. Função de gerar os metodos com a logica para o front
 3 - CrossCutting
  a. Função de armazenar os auxiliares usamos em multi projetos
 4 - Infra

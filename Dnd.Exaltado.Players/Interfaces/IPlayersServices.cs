@@ -7,5 +7,8 @@ namespace Dnd.Exaltado.Players.Interfaces
     {
         List<Entity.Players> SearchPlayers();
         Entity.Players SearchPlayers(int id);
+        bool InsertPlayer(Entity.Players players);
+        bool DeletePlayer(int id);
+        bool EditPlayer(Entity.Players players);
     }
 }

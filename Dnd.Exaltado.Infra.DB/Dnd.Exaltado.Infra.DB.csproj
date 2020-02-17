@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dnd.Exaltado.Infra.DB\Dnd.Exaltado.Infra.DB.csproj" />
+    <ProjectReference Include="..\Dnd.Exaltado.CrossCutting\Dnd.Exaltado.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

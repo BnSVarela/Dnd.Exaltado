@@ -1,10 +1,17 @@
-﻿using Dnd.Exaltado.Players.Interfaces;
+﻿using Dnd.Exaltado.Infra.DB.Interface;
+using Dnd.Exaltado.Players.Interfaces;
 using System.Collections.Generic;
 
 namespace Dnd.Exaltado.Players.Services
 {
     public class PlayersService : IPlayersServices
     {
+        private readonly IDBService _DBService = null;
+
+        public PlayersService(IDBService DBService)
+        {
+            _DBService = DBService;
+        }
         public List<Entity.Players> SearchPlayers()
         {
             List<Entity.Players> playersList = new List<Entity.Players>();
@@ -74,6 +81,20 @@ namespace Dnd.Exaltado.Players.Services
             }
 
             return players;
+        }
+
+        public bool InsertPlayer(Entity.Players players) 
+        {
+            
+            return _DBService.teste(); 
+        }
+        public bool DeletePlayer(int id)
+        {
+            return true;
+        }
+        public bool EditPlayer(Entity.Players players)
+        {
+            return true;
         }
     }
 }
