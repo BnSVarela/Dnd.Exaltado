@@ -44,7 +44,6 @@
         var url = "Players/InsertPlayerPartialView";
 
         $.get(url, function (data) {
-            jQuery.noConflict();
             $('#PlayersInsertDiv').html(data);
             $('#PlayersInsert').modal('show');
             $(Div, '#PlayersInsert').hide();
@@ -62,7 +61,6 @@
         var url = "Players/EditPlayerPartialView/" + id;
 
         $.get(url, function (data) {
-            jQuery.noConflict();
             $('#PlayersEditDiv').html(data);
             $('#PlayersEdit').modal('show');
             $(Div, '#PlayersEdit').hide();
@@ -80,12 +78,12 @@
         var url = "Players/ViewPlayerPartialView/" + id;
 
         $.get(url, function (data) {
-            jQuery.noConflict();
             $('#PlayersViewDiv').html(data);
-            $('#PlayersView').modal('show');
+            $('#PlayersView').modal('show');            
             $('input', '#PlayersView').attr('readonly', true);
             $(Div, '#PlayersView').hide();
             $('button', '#PlayersView .custom-grid').hide();
+            
         });
     };
 

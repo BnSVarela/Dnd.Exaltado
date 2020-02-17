@@ -14,6 +14,7 @@
     var GridButtonId = "";
     var GridTabelId = "";
     var TableCustomClass = "";
+    var TypeSwitch = "";
     var Value = propertyInfo.GetValue(Model, null);
     var ValueClass = (dynamic)null;
     var ValueGrid = (dynamic)null;
@@ -37,7 +38,7 @@
         count = 0;
     };
 
-    var TypeSwitch = propertyInfo.PropertyType.UnderlyingSystemType.ToString();
+    TypeSwitch = propertyInfo.PropertyType.UnderlyingSystemType.ToString();
 
     if (TypeSwitch.Contains("Nullable")) {
 
@@ -88,17 +89,17 @@
                 @foreach (System.Reflection.PropertyInfo propertyInfoClass in propertyInfo.PropertyType.UnderlyingSystemType.GetProperties())
                 {
 
-                    var TypeSwitchClass = propertyInfoClass.PropertyType.UnderlyingSystemType.ToString();
+                    TypeSwitch = propertyInfoClass.PropertyType.UnderlyingSystemType.ToString();
 
-                    if (TypeSwitchClass.Contains("Nullable")) {
+                    if (TypeSwitch.Contains("Nullable")) {
 
-                        var Start = TypeSwitchClass.IndexOf("[", 0) + "[".Length;
-                        var End = TypeSwitchClass.IndexOf("]", Start);
-                        TypeSwitchClass = TypeSwitchClass.Substring(Start, End - Start);
+                        var Start = TypeSwitch.IndexOf("[", 0) + "[".Length;
+                        var End = TypeSwitch.IndexOf("]", Start);
+                        TypeSwitch = TypeSwitch.Substring(Start, End - Start);
 
                     };
 
-                    switch (TypeSwitchClass)
+                    switch (TypeSwitch)
                     {
 
                         case "System.Int32":
@@ -184,17 +185,17 @@
                                                         Id = propertyInfoGridItensArray.Name;
 
 
-                                                        var TypeSwitchGrid = propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString();
+                                                        TypeSwitch = propertyInfoGridItensArray.PropertyType.UnderlyingSystemType.ToString();
 
-                                                        if (TypeSwitchGrid.Contains("Nullable")) {
+                                                        if (TypeSwitch.Contains("Nullable")) {
 
-                                                            var Start = TypeSwitchGrid.IndexOf("[", 0) + "[".Length;
-                                                            var End = TypeSwitchGrid.IndexOf("]", Start);
-                                                            TypeSwitchGrid = TypeSwitchGrid.Substring(Start, End - Start);
+                                                            var Start = TypeSwitch.IndexOf("[", 0) + "[".Length;
+                                                            var End = TypeSwitch.IndexOf("]", Start);
+                                                            TypeSwitch = TypeSwitch.Substring(Start, End - Start);
 
                                                         };
 
-                                                        switch (TypeSwitchGrid)
+                                                        switch (TypeSwitch)
                                                         {
 
                                                             case "System.Int32":
@@ -226,17 +227,17 @@
                                             {
                                                 Id = propertyInfoGridItens.Name;
 
-                                                var TypeSwitchGrid = propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString();
+                                                TypeSwitch = propertyInfoGridItens.PropertyType.UnderlyingSystemType.ToString();
 
-                                                if (TypeSwitchGrid.Contains("Nullable")) {
+                                                if (TypeSwitch.Contains("Nullable")) {
 
-                                                    var Start = TypeSwitchGrid.IndexOf("[", 0) + "[".Length;
-                                                    var End = TypeSwitchGrid.IndexOf("]", Start);
-                                                    TypeSwitchGrid = TypeSwitchGrid.Substring(Start, End - Start);
+                                                    var Start = TypeSwitch.IndexOf("[", 0) + "[".Length;
+                                                    var End = TypeSwitch.IndexOf("]", Start);
+                                                    TypeSwitch = TypeSwitch.Substring(Start, End - Start);
 
                                                 };
 
-                                                switch (TypeSwitchGrid)
+                                                switch (TypeSwitch)
                                                 {
 
                                                     case "System.Int32":
