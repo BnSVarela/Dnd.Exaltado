@@ -9,3 +9,5 @@ C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\bin\Debug\netcoreapp3.1\Dnd
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\bin\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.pdb
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\obj\Debug\netcoreapp3.1\Dnd.Exaltado.Infra.DB.csprojAssemblyReference.cache
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\obj\Debug\netcoreapp3.1\Dnd.Exaltado.Infra.DB.csproj.CopyComplete
+C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\bin\Debug\netcoreapp3.1\Dnd.Exaltado.Infra.DB.runtimeconfig.json
+C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.Infra.DB\bin\Debug\netcoreapp3.1\Dnd.Exaltado.Infra.DB.runtimeconfig.dev.json

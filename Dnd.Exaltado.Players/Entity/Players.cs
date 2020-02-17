@@ -12,59 +12,9 @@ namespace Dnd.Exaltado.Players.Entity
     [DataContract]
     public class Players
     {
-        [DataMember(Name ="PlayerName")]
-        public string PlayerName { get; set; }
-        [DataMember(Name = "CharacterName")]
-        public string CharacterName { get; set; }
         [DataMember(Name = "_Id")]
         public int? _Id { get; set; }
-        [DataMember(Name = "_PlayersTeste")]
-        public _PlayersTeste _PlayersTeste { get; set; }
-        [DataMember(Name = "_PlayersTeste2")]
-        public _PlayersTeste2 _PlayersTeste2 { get; set; }
-        [DataMember(Name = "_PlayersGrid")]
-        public List<_PlayersGrid> _PlayersGrid { get; set; }
-        [DataMember(Name = "_PlayersGrid2")]
-        public List<_PlayersGrid2> _PlayersGrid2 { get; set; }
-
-    }
-
-    [DataContract]
-    public class _PlayersTeste
-    {
-        [DataMember(Name = "PlayerName1")]
-        public string PlayerName1 { get; set; }
-        [DataMember(Name = "CharacterName1")]
-        public string CharacterName1 { get; set; }
-        [DataMember(Name = "CharacterHP")]
-        public int? CharacterHP { get; set; }
-    }
-
-    public class _PlayersTeste2
-    {
-        [DataMember(Name = "PlayerName1")]
-        public string PlayerName1 { get; set; }
-        [DataMember(Name = "CharacterName1")]
-        public string CharacterName1 { get; set; }
-        [DataMember(Name = "CharacterHP")]
-        public int? CharacterHP { get; set; }
-    }
-
-    [DataContract]
-    public class _PlayersGrid
-    {
-        [DataMember(Name = "Item")]
-        public string Item { get; set; }
-        [DataMember(Name = "Quantity")]
-        public int? Quantity { get; set; }
-    }
-
-    [DataContract]
-    public class _PlayersGrid2
-    {
-        [DataMember(Name = "Item")]
-        public string Item { get; set; }
-        [DataMember(Name = "Quantity")]
-        public int? Quantity { get; set; }
+        [DataMember(Name = "PlayerName")]
+        public string PlayerName { get; set; }
     }
 }

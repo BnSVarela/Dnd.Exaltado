@@ -28,9 +28,8 @@ namespace Dnd.Exaltado.Web
             services.AddSingleton(ConfigBuilder.BuildAppSettings());
 
             services.AddSingleton<IDBConfig, DBConfig>();
-            services.AddSingleton<IDBService, DBService>();         
-
-            
+            //Injetar para cada tipo
+            services.AddSingleton<IDBService<Players.Entity.Players>, DBService<Players.Entity.Players>>();                    
 
             services.AddSingleton<IPlayersServices, PlayersService>();
 
