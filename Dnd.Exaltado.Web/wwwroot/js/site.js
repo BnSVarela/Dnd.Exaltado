@@ -153,3 +153,182 @@ const AddRow = function (table, modal) {
     $last_row.after($new_row);
 
 };
+
+const Estrutura = function (name) {
+
+    $(document).on('click', '#btn-search-' + name, function (e) {
+        e.preventDefault();
+        Search();
+    });
+
+    $(document).on('submit', '#' + name + 'Insert', function (e) {
+        e.preventDefault();
+        Insert();
+    });
+
+    $(document).on('submit', '#' + name + 'Edit', function (e) {
+        e.preventDefault();
+        Edit();
+    });
+
+    $(document).on('click', '#btn-insert-' + name, function (e) {
+        e.preventDefault();
+        InsertPartialView();
+    });
+
+    $(document).on('click', '#btn-view', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        ViewPartialView(id);
+    });
+
+    $(document).on('click', '#btn-edit', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        EditPartialView(id);
+    });
+
+    $(document).on('click', '#btn-delete', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        Delete(id);
+    });
+
+    const Search = function () {
+
+        var url = name + "/Search" + name;
+
+        $.get(url, function (data) {
+            $('#partial-' + name).html(data);
+
+            var table = $('#tabela-grid').DataTable();
+
+            var columnids = [];
+
+            table.columns().every(function (index) {
+                if (this.header().innerHTML.startsWith("_")) {
+                    var columnid = {};
+
+                    columnid = index;
+                    columnids.push(columnid);
+                }
+            });
+
+            table.destroy();
+
+            $('#tabela-grid').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "columnDefs": [
+                    { "targets": columnids, "visible": false }
+                ]
+            });
+
+        });
+    };
+
+    const InsertPartialView = function () {
+        var url = name + "/Insert" + name + "PartialView";
+
+        $.get(url, function (data) {
+            $('#' + name + 'InsertDiv').html(data);
+            $('#' + name + 'Insert').modal('show');
+
+            $('button', '#' + name + 'Insert .custom-grid').click(function () {
+                var table = '#' + $(this).attr('id').replace('btn', 'table');
+                AddRow(table, '#' + name + 'Insert .custom-grid');
+            });
+        });
+    };
+
+    const EditPartialView = function (id) {
+        var url = name + "/Edit" + name + "PartialView/" + id;
+
+        $.get(url, function (data) {
+            $('#' + name + 'EditDiv').html(data);
+            $('#' + name + 'Edit').modal('show');
+
+            $('button', '#' + name + 'Edit .custom-grid').click(function () {
+                var table = '#' + $(this).attr('id').replace('btn', 'table');
+                AddRow(table, '#' + name + 'Edit .custom-grid');
+            });
+        });
+    };
+
+    const ViewPartialView = function (id) {
+        var url = name + "/View" + name + "PartialView/" + id;
+
+        $.get(url, function (data) {
+            $('#' + name +'ViewDiv').html(data);
+            $('#' + name + 'View').modal('show');
+
+            $('input', '#' + name + 'View').attr('readonly', true);
+            $('submit', '#' + name + 'View').hide();
+            $('button', '#' + name + 'View .custom-grid').hide();
+
+        });
+    };
+
+    const Delete = function (id) {
+        var url = name + "/Delete" + name + "/" + id;
+
+        $.get(url, function (data) {
+            if (data) {
+                window.location.reload();
+            }
+        });
+    };
+
+    const Insert = function () {
+
+        var json = GetJson("#" + name + "Insert");
+
+        console.log(json);
+
+        $.ajax({
+            url: name + "/Insert" + name,
+            type: "POST",
+            contentType: 'application/json',
+            accept: 'application/json',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data) {
+                    $('#' + name + 'InsertClose').click();
+                    window.location.reload();
+                }
+
+
+            }
+        });
+    };
+
+    const MonstersEdit = function () {
+
+        var json = GetJson("#" + name + "Edit");
+
+        console.log(json);
+
+        $.ajax({
+            url: name + "/Edit" + name,
+            type: "POST",
+            contentType: 'application/json',
+            accept: 'application/json',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data) {
+                    $('#' + name + 'EditClose').click();
+                    window.location.reload();
+                }
+
+
+            }
+        });
+    };
+
+
+};
+

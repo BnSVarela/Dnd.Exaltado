@@ -31,7 +31,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_Standard", players);
         }
 
-        public IActionResult InsertPlayerPartialView()
+        public IActionResult InsertPlayersPartialView()
         {
             Players.Entity.Players players = new Players.Entity.Players();
 
@@ -40,12 +40,12 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool InsertPlayer([FromBody]Players.Entity.Players players)
+        public bool InsertPlayers([FromBody]Players.Entity.Players players)
         {
             return _playersService.InsertPlayer(players);
         }
 
-        public IActionResult ViewPlayerPartialView(int id)
+        public IActionResult ViewPlayersPartialView(int id)
         {
             var players = _playersService.SearchPlayers(id);
             players._ModalId = "PlayersView";
@@ -53,12 +53,12 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool DeletePlayer(int id)
+        public bool DeletePlayers(int id)
         {
             return _playersService.DeletePlayer(id);
         }
 
-        public IActionResult EditPlayerPartialView(int id)
+        public IActionResult EditPlayersPartialView(int id)
         {
             var players = _playersService.SearchPlayers(id);
 
@@ -67,7 +67,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool EditPlayer([FromBody]Players.Entity.Players players)
+        public bool EditPlayers([FromBody]Players.Entity.Players players)
         {
             return _playersService.EditPlayer(players);
         }
