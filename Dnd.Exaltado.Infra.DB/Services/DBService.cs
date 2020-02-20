@@ -61,7 +61,7 @@ namespace Dnd.Exaltado.Infra.DB.Services
 
                 foreach (PropertyInfo property in properties)
                 {
-                    if (property.Name != "_Id")
+                    if (property.Name != "_Id" && property.Name != "_ModalId" && property.Name != "_ModalTitle")
                     {
                         strQuery.Append(property.Name);
                         strQuery.Append(",");
@@ -73,9 +73,9 @@ namespace Dnd.Exaltado.Infra.DB.Services
                 strQuery.Append(") values (");
 
                 PropertyInfo[] propertiesValues = typeof(T).GetProperties();
-                foreach (PropertyInfo property in propertiesValues)
+                foreach (var property in propertiesValues)
                 {
-                    if (property.Name != "_Id")
+                    if (property.Name != "_Id" && property.Name != "_ModalId" && property.Name != "_ModalTitle")
                     {
                         strQuery.Append("'");
                         if (property.PropertyType.Name.ToString() == "Decimal")

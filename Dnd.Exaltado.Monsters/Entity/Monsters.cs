@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
-namespace Dnd.Exaltado.Players.Entity
+namespace Dnd.Exaltado.Monsters.Entity
 {
     /// <summary>
     /// Propriedades que começam com "_" não aparecem na lista.
     /// SubClasse e Propriedade do tipo da subclasse precisam ter o mesmo nome.
     /// </summary>
     [DataContract]
-    public class Players
+    public class Monsters
     {
         [DataMember(Name = "_Id")]
         public int? _Id { get; set; }
@@ -20,12 +17,9 @@ namespace Dnd.Exaltado.Players.Entity
         public string _ModalTitle { get; set; }
 
 
-        [DataMember(Name = "PlayerName")]
-        public string PlayerName { get; set; }
-        [DataMember(Name = "CharacterName")]
-        public string CharacterName { get; set; }
-
-
-        
+        [DataMember(Name = "MonsterName")]
+        public string MonsterName { get; set; }
+        [DataMember(Name = "HitPoints")]
+        public int HitPoints { get; set; }
     }
 }

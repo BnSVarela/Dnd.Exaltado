@@ -1,6 +1,5 @@
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\bin\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.deps.json
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\bin\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.dll
-C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\obj\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.csprojAssemblyReference.cache
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\obj\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.AssemblyInfoInputs.cache
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\obj\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.AssemblyInfo.cs
 C:\Fontes\Pessoal\Dnd.Exaltado\Dnd.Exaltado.CrossCutting\bin\Debug\netcoreapp3.1\Dnd.Exaltado.CrossCutting.pdb

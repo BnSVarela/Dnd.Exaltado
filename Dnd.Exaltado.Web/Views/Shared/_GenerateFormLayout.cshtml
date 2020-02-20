@@ -1,8 +1,12 @@
-﻿<form class="modal fade" tabindex="-1" role="dialog" id="PlayersEdit">
+﻿@{ 
+    var CloseButtonId = Model._ModalId + "Close";
+}
+
+<form class="modal fade" tabindex="-1" role="dialog" id="@Model._ModalId">
     <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">View Player</h4>
+                <h4 class="modal-title">@Model._ModalTitle</h4>
             </div>
             <div class="modal-body">
                 <div class="card card-outline card-primary">
@@ -11,15 +15,15 @@
                     </div>
                     <div class="card-body">
 
-                        @Html.Partial("_GenerateForm")
+                        @Html.Partial("_GenerateFormFields")
 
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="PlayersEditClose" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" form="PlayersEdit">Save changes</button>
+                <button type="button" class="btn btn-default" id="@CloseButtonId" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" form="@Model._ModalId">Save changes</button>
             </div>
         </div>
     </div>

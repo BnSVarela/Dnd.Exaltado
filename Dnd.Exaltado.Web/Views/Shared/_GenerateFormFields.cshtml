@@ -22,14 +22,11 @@
     var Name = @propertyInfo.Name.Replace("_", "");
     var Id = @propertyInfo.Name;
 
-    if (Name == "Id" && Value != null)
+    if (Name == "Id" || Name == "ModalId" || Name == "ModalTitle")
     {
-        DivId = "Div" + Name + "_" + Value;
-
-    } else if (Name == "Id")
-    {
-        DivId = "DivId";
+        DivStyle = "display: none;";
     }
+        
 
 
     if (count == 1)

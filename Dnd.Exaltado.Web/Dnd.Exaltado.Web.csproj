@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dnd.Exaltado.CrossCutting\Dnd.Exaltado.CrossCutting.csproj" />
+    <ProjectReference Include="..\Dnd.Exaltado.Monsters\Dnd.Exaltado.Monsters.csproj" />
     <ProjectReference Include="..\Dnd.Exaltado.Players\Dnd.Exaltado.Players.csproj" />
   </ItemGroup>
 

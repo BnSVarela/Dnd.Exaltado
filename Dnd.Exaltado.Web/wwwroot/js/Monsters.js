@@ -1,89 +1,89 @@
 ﻿$(function () {
 
-    $(document).on('click', '#btn-search-player', function (e) {
+    $(document).on('click', '#btn-search-monsters', function (e) {
         e.preventDefault();
-        SearchPlayers();
+        SearchMonsters();
     });
 
-    $(document).on('submit', '#PlayersInsert', function (e) {
+    $(document).on('submit', '#MonstersInsert', function (e) {
         e.preventDefault();
-        PlayerInsert();
+        MonstersInsert();
     });
 
-    $(document).on('submit', '#PlayersEdit', function (e) {
+    $(document).on('submit', '#MonstersEdit', function (e) {
         e.preventDefault();
-        PlayerEdit();
+        MonstersEdit();
     });
 
-    $(document).on('click', '#btn-insert-Players', function (e) {
+    $(document).on('click', '#btn-insert-Monsters', function (e) {
         e.preventDefault();
-        InsertPlayersPartialView();
+        InsertMonstersPartialView();
     });
 
     $(document).on('click', '#btn-view', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
-        ViewPlayersPartialView(id);
+        ViewMonstersPartialView(id);
     });
 
     $(document).on('click', '#btn-delete', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
-        DeletePlayer(id);
+        DeleteMonsters(id);
     });
 
     $(document).on('click', '#btn-edit', function (e) {
         e.preventDefault();
         var id = $(this).attr('value');
-        EditPlayersPartialView(id);
+        EditMonstersPartialView(id);
     });
 
 
 
-    const InsertPlayersPartialView = function () {
-        var url = "Players/InsertPlayerPartialView";
+    const InsertMonstersPartialView = function () {
+        var url = "Monsters/InsertMonstersPartialView";
 
         $.get(url, function (data) {
-            $('#PlayersInsertDiv').html(data);
-            $('#PlayersInsert').modal('show');
+            $('#MonstersInsertDiv').html(data);
+            $('#MonstersInsert').modal('show');
 
-            $('button', '#PlayersInsert .custom-grid').click(function () {
+            $('button', '#MonstersInsert .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
-                AddRow(table, '#PlayersInsert .custom-grid');
+                AddRow(table, '#MonstersInsert .custom-grid');
             });
         });
     };
 
-    const EditPlayersPartialView = function (id) {
-        var url = "Players/EditPlayerPartialView/" + id;
+    const EditMonstersPartialView = function (id) {
+        var url = "Monsters/EditMonstersPartialView/" + id;
 
         $.get(url, function (data) {
-            $('#PlayersEditDiv').html(data);
-            $('#PlayersEdit').modal('show');
+            $('#MonstersEditDiv').html(data);
+            $('#MonstersEdit').modal('show');
 
-            $('button', '#PlayersEdit .custom-grid').click(function () {
+            $('button', '#MonstersEdit .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
-                AddRow(table, '#PlayersEdit .custom-grid');
+                AddRow(table, '#MonstersEdit .custom-grid');
             });
         });
     };
 
-    const ViewPlayersPartialView = function (id) {
-        var url = "Players/ViewPlayerPartialView/" + id;
+    const ViewMonstersPartialView = function (id) {
+        var url = "Monsters/ViewMonstersPartialView/" + id;
 
         $.get(url, function (data) {
-            $('#PlayersViewDiv').html(data);
-            $('#PlayersView').modal('show');  
-            
-            $('input', '#PlayersView').attr('readonly', true);
-            $('submit', '#PlayersView').hide();
-            $('button', '#PlayersView .custom-grid').hide();
-            
+            $('#MonstersViewDiv').html(data);
+            $('#MonstersView').modal('show');
+
+            $('input', '#MonstersView').attr('readonly', true);
+            $('submit', '#MonstersView').hide();
+            $('button', '#MonstersView .custom-grid').hide();
+
         });
     };
 
-    const DeletePlayer = function (id) {
-        var url = "Players/DeletePlayer/" + id;
+    const DeleteMonsters = function (id) {
+        var url = "Monsters/DeleteMonsters/" + id;
 
         $.get(url, function (data) {
             if (data) {
@@ -93,12 +93,12 @@
     };
 
 
-    const SearchPlayers = function () {
+    const SearchMonsters = function () {
 
-        var url = "Players/SearchPlayers";
+        var url = "Monsters/SearchMonsters";
 
         $.get(url, function (data) {
-            $('#partial-players').html(data);
+            $('#partial-monsters').html(data);
 
             var table = $('#tabela-grid').DataTable();
 
@@ -127,17 +127,17 @@
 
         });
 
-        
+
     };
 
-    const PlayerInsert = function () {
+    const MonstersInsert = function () {
 
-        var json = GetJson("#PlayersInsert");
+        var json = GetJson("#MonstersInsert");
 
         console.log(json);
 
         $.ajax({
-            url: "Players/InsertPlayer",
+            url: "Monsters/InsertMonsters",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',
@@ -145,7 +145,7 @@
             data: json,
             success: function (data) {
                 if (data) {
-                    $('#PlayersInsertClose').click();
+                    $('#MonstersInsertClose').click();
                     window.location.reload();
                 }
 
@@ -154,14 +154,14 @@
         });
     };
 
-    const PlayerEdit = function () {
+    const MonstersEdit = function () {
 
-        var json = GetJson("#PlayersEdit");
+        var json = GetJson("#MonstersEdit");
 
         console.log(json);
 
         $.ajax({
-            url: "Players/EditPlayer",
+            url: "Monsters/EditMonsters",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',
@@ -169,7 +169,7 @@
             data: json,
             success: function (data) {
                 if (data) {
-                    $('#PlayersEditClose').click();
+                    $('#MonstersEditClose').click();
                     window.location.reload();
                 }
 

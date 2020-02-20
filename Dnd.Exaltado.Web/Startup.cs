@@ -1,6 +1,8 @@
 using Dnd.Exaltado.CrossCutting.Config;
 using Dnd.Exaltado.Infra.DB.Interface;
 using Dnd.Exaltado.Infra.DB.Services;
+using Dnd.Exaltado.Monsters.Interfaces;
+using Dnd.Exaltado.Monsters.Services;
 using Dnd.Exaltado.Players.Interfaces;
 using Dnd.Exaltado.Players.Services;
 using Microsoft.AspNetCore.Builder;
@@ -29,9 +31,11 @@ namespace Dnd.Exaltado.Web
 
             services.AddSingleton<IDBConfig, DBConfig>();
             //Injetar para cada tipo
-            services.AddSingleton<IDBService<Players.Entity.Players>, DBService<Players.Entity.Players>>();                    
+            services.AddSingleton<IDBService<Players.Entity.Players>, DBService<Players.Entity.Players>>();
+            services.AddSingleton<IDBService<Monsters.Entity.Monsters>, DBService<Monsters.Entity.Monsters>>();
 
             services.AddSingleton<IPlayersServices, PlayersService>();
+            services.AddSingleton<IMonstersServices, MonstersService>();
 
         }
 
@@ -44,8 +48,6 @@ namespace Dnd.Exaltado.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
