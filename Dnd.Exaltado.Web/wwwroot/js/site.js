@@ -230,7 +230,7 @@ const Estrutura = function (name) {
     };
 
     const InsertPartialView = function () {
-        var url = name + "/Insert" + name + "PartialView";
+        var url = name + "/InsertPartialView";
 
         $.get(url, function (data) {
             $('#' + name + 'InsertDiv').html(data);
@@ -244,7 +244,7 @@ const Estrutura = function (name) {
     };
 
     const EditPartialView = function (id) {
-        var url = name + "/Edit" + name + "PartialView/" + id;
+        var url = name + "/EditPartialView/" + id;
 
         $.get(url, function (data) {
             $('#' + name + 'EditDiv').html(data);
@@ -258,7 +258,7 @@ const Estrutura = function (name) {
     };
 
     const ViewPartialView = function (id) {
-        var url = name + "/View" + name + "PartialView/" + id;
+        var url = name + "/ViewPartialView/" + id;
 
         $.get(url, function (data) {
             $('#' + name +'ViewDiv').html(data);
@@ -272,7 +272,7 @@ const Estrutura = function (name) {
     };
 
     const Delete = function (id) {
-        var url = name + "/Delete" + name + "/" + id;
+        var url = name + "/Delete/" + id;
 
         $.get(url, function (data) {
             if (data) {
@@ -288,7 +288,7 @@ const Estrutura = function (name) {
         console.log(json);
 
         $.ajax({
-            url: name + "/Insert" + name,
+            url: name + "/Insert",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',
@@ -312,7 +312,7 @@ const Estrutura = function (name) {
         console.log(json);
 
         $.ajax({
-            url: name + "/Edit" + name,
+            url: name + "/Edit",
             type: "POST",
             contentType: 'application/json',
             accept: 'application/json',

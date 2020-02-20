@@ -18,7 +18,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return View();
         }
 
-        public IActionResult SearchPlayers()
+        public IActionResult Search()
         {
             var players = _playersService.SearchPlayers();
             if (players.Count == 0)
@@ -31,7 +31,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_Standard", players);
         }
 
-        public IActionResult InsertPlayersPartialView()
+        public IActionResult InsertPartialView()
         {
             Players.Entity.Players players = new Players.Entity.Players();
 
@@ -40,12 +40,12 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool InsertPlayers([FromBody]Players.Entity.Players players)
+        public bool Insert([FromBody]Players.Entity.Players players)
         {
             return _playersService.InsertPlayer(players);
         }
 
-        public IActionResult ViewPlayersPartialView(int id)
+        public IActionResult ViewPartialView(int id)
         {
             var players = _playersService.SearchPlayers(id);
             players._ModalId = "PlayersView";
@@ -53,12 +53,12 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool DeletePlayers(int id)
+        public bool Delete(int id)
         {
             return _playersService.DeletePlayer(id);
         }
 
-        public IActionResult EditPlayersPartialView(int id)
+        public IActionResult EditPartialView(int id)
         {
             var players = _playersService.SearchPlayers(id);
 
@@ -67,7 +67,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", players);
         }
 
-        public bool EditPlayers([FromBody]Players.Entity.Players players)
+        public bool Edit([FromBody]Players.Entity.Players players)
         {
             return _playersService.EditPlayer(players);
         }

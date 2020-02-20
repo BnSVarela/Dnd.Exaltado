@@ -20,7 +20,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return View();
         }
 
-        public IActionResult SearchMonsters()
+        public IActionResult Search()
         {
             var monsters = _MonstersServices.SearchMonsters();
             if (monsters.Count == 0)
@@ -33,7 +33,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_Standard", monsters);
         }
 
-        public IActionResult InsertMonstersPartialView()
+        public IActionResult InsertPartialView()
         {
             Monsters.Entity.Monsters monsters = new Monsters.Entity.Monsters();
 
@@ -47,7 +47,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return _MonstersServices.InsertMonsters(monsters);
         }
 
-        public IActionResult ViewMonstersPartialView(int id)
+        public IActionResult ViewPartialView(int id)
         {
             var monsters = _MonstersServices.SearchMonsters(id);
             monsters._ModalId = "MonstersView";
@@ -55,12 +55,12 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", monsters);
         }
 
-        public bool DeleteMonsters(int id)
+        public bool Delete(int id)
         {
             return _MonstersServices.DeleteMonsters(id);
         }
 
-        public IActionResult EditMonstersPartialView(int id)
+        public IActionResult EditPartialView(int id)
         {
             var monsters = _MonstersServices.SearchMonsters(id);
 
@@ -69,7 +69,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", monsters);
         }
 
-        public bool EditMonsters([FromBody]Monsters.Entity.Monsters monsters)
+        public bool Edit([FromBody]Monsters.Entity.Monsters monsters)
         {
             return _MonstersServices.EditMonsters(monsters);
         }
