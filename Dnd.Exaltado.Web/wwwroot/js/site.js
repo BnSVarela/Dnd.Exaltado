@@ -196,7 +196,7 @@ const Estrutura = function (name) {
 
     const Search = function () {
 
-        var url = name + "/Search" + name;
+        var url = name + "/Search";
 
         $.get(url, function (data) {
             $('#partial-' + name).html(data);
