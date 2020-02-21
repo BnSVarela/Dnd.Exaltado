@@ -1,10 +1,11 @@
-﻿using Dnd.Exaltado.Players.Interfaces;
+﻿using Dnd.Exaltado.CrossCutting.Interfaces;
+using Dnd.Exaltado.Players.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
 namespace Dnd.Exaltado.Web.Controllers
 {
-    public class PlayersController : Controller
+    public class PlayersController : Controller, IRegisters<Players.Entity.Players>
     {
         private readonly IPlayersServices _playersService;
 

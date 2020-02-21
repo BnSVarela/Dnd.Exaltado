@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dnd.Exaltado.CrossCutting.Interfaces;
 using Dnd.Exaltado.Monsters.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dnd.Exaltado.Web.Controllers
 {
-    public class MonstersController : Controller
+    public class MonstersController : Controller, IRegisters<Monsters.Entity.Monsters>
     {
         private readonly IMonstersServices _MonstersServices;
 
@@ -42,7 +43,7 @@ namespace Dnd.Exaltado.Web.Controllers
             return PartialView("_GenerateFormLayout", monsters);
         }
 
-        public bool InsertMonsters([FromBody]Monsters.Entity.Monsters monsters)
+        public bool Insert([FromBody]Monsters.Entity.Monsters monsters)
         {
             return _MonstersServices.InsertMonsters(monsters);
         }
