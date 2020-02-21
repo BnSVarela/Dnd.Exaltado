@@ -154,11 +154,11 @@ const AddRow = function (table, modal) {
 
 };
 
-const ShowLoading = function () {
+const ShowLoading = function() {
     $('#_LoadingModal').modal('show');
 };
 
-const HideLoading = function () {
+const HideLoading = function() {
     $('#_LoadingModal').modal('hide');
 };
 
@@ -235,12 +235,14 @@ const Estrutura = function (name) {
                 ]
             });
 
-        }).always(function () {
+        }).always(function () {            
             HideLoading();
         });
     };
 
     const InsertPartialView = function () {
+        ShowLoading();
+
         var url = name + "/InsertPartialView";
 
         $.get(url, function (data) {
@@ -251,11 +253,14 @@ const Estrutura = function (name) {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
                 AddRow(table, '#' + name + 'Insert .custom-grid');
             });
-        });
+        }).always(function () {
+            HideLoading();
+        });  
     };
 
     const EditPartialView = function (id) {
         ShowLoading();
+
         var url = name + "/EditPartialView/" + id;
 
         $.get(url, function (data) {
@@ -283,7 +288,7 @@ const Estrutura = function (name) {
             $('button', '#' + name + 'View .custom-grid').hide();
         }).always(function () {
             HideLoading();
-        }); ;       
+        });        
     };
 
     const Delete = function (id) {
