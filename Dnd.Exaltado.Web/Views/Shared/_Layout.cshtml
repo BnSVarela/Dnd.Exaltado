@@ -14,12 +14,13 @@
     <div class="wrapper">
 
         @Html.Partial("_Header")
-        
+
         @Html.Partial("_Sidebar")
 
-        
+        @Html.Partial("_Loading")        
+
         <div class="content-wrapper">
-        
+
             <div class="content-header">
                 <div class="container-fluid">
                 </div>
@@ -29,12 +30,10 @@
                     <div>
                         @RenderBody()
                     </div>
-                    
+
                 </div>
             </div>
-            
         </div>
-        
         @Html.Partial("_Footer")
     </div>    
     

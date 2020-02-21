@@ -154,6 +154,14 @@ const AddRow = function (table, modal) {
 
 };
 
+const ShowLoading = function () {
+    $('#_LoadingModal').modal('show');
+};
+
+const HideLoading = function () {
+    $('#_LoadingModal').modal('hide');
+};
+
 const Estrutura = function (name) {
 
     $(document).on('click', '#btn-search-' + name, function (e) {
@@ -195,6 +203,7 @@ const Estrutura = function (name) {
     });
 
     const Search = function () {
+        ShowLoading();
 
         var url = name + "/Search";
 
@@ -226,6 +235,8 @@ const Estrutura = function (name) {
                 ]
             });
 
+        }).always(function () {
+            HideLoading();
         });
     };
 
@@ -235,7 +246,7 @@ const Estrutura = function (name) {
         $.get(url, function (data) {
             $('#' + name + 'InsertDiv').html(data);
             $('#' + name + 'Insert').modal('show');
-
+        }).done(function () {
             $('button', '#' + name + 'Insert .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
                 AddRow(table, '#' + name + 'Insert .custom-grid');
@@ -244,45 +255,52 @@ const Estrutura = function (name) {
     };
 
     const EditPartialView = function (id) {
+        ShowLoading();
         var url = name + "/EditPartialView/" + id;
 
         $.get(url, function (data) {
             $('#' + name + 'EditDiv').html(data);
             $('#' + name + 'Edit').modal('show');
-
+        }).done(function () {
             $('button', '#' + name + 'Edit .custom-grid').click(function () {
                 var table = '#' + $(this).attr('id').replace('btn', 'table');
                 AddRow(table, '#' + name + 'Edit .custom-grid');
             });
-        });
+        }).always(function () {
+            HideLoading();
+        });        
     };
 
     const ViewPartialView = function (id) {
+        ShowLoading();
         var url = name + "/ViewPartialView/" + id;
 
         $.get(url, function (data) {
-            $('#' + name +'ViewDiv').html(data);
+            $('#' + name + 'ViewDiv').html(data);
             $('#' + name + 'View').modal('show');
-
+        }).done(function () {
             $('input', '#' + name + 'View').attr('readonly', true);
-            $('submit', '#' + name + 'View').hide();
             $('button', '#' + name + 'View .custom-grid').hide();
-
-        });
+        }).always(function () {
+            HideLoading();
+        }); ;       
     };
 
     const Delete = function (id) {
+        ShowLoading();
         var url = name + "/Delete/" + id;
 
         $.get(url, function (data) {
             if (data) {
                 window.location.reload();
             }
+        }).always(function () {
+            HideLoading();
         });
     };
 
     const Insert = function () {
-
+        ShowLoading();
         var json = GetJson("#" + name + "Insert");
 
         console.log(json);
@@ -302,11 +320,13 @@ const Estrutura = function (name) {
 
 
             }
+        }).always(function () {
+            HideLoading();
         });
     };
 
-    const MonstersEdit = function () {
-
+    const Edit = function () {
+        ShowLoading();
         var json = GetJson("#" + name + "Edit");
 
         console.log(json);
@@ -326,6 +346,8 @@ const Estrutura = function (name) {
 
 
             }
+        }).always(function () {
+            HideLoading();
         });
     };
 

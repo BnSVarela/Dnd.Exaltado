@@ -1,5 +1,7 @@
-﻿@{ 
+﻿@{
     var CloseButtonId = Model._ModalId + "Close";
+
+    var Valida =  Model._ModalId.ToString().Contains("View");
 }
 
 <form class="modal fade" tabindex="-1" role="dialog" id="@Model._ModalId">
@@ -21,10 +23,22 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="@CloseButtonId" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" form="@Model._ModalId">Save changes</button>
-            </div>
+            @{
+                if (Valida)
+                {
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="@CloseButtonId" data-dismiss="modal">Close</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="@CloseButtonId" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" form="@Model._ModalId">Save changes</button>
+                    </div>
+                }
+            }
+
         </div>
     </div>
 </form>

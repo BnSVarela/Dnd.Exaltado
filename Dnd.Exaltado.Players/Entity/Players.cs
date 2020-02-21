@@ -5,10 +5,6 @@ using System.Text;
 
 namespace Dnd.Exaltado.Players.Entity
 {
-    /// <summary>
-    /// Propriedades que começam com "_" não aparecem na lista.
-    /// SubClasse e Propriedade do tipo da subclasse precisam ter o mesmo nome.
-    /// </summary>
     [DataContract]
     public class Players
     {
@@ -24,8 +20,8 @@ namespace Dnd.Exaltado.Players.Entity
         public string PlayerName { get; set; }
         [DataMember(Name = "CharacterName")]
         public string CharacterName { get; set; }
-
-
-        
     }
+
+
 }
+
