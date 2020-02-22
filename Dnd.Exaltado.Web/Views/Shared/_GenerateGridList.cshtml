@@ -34,25 +34,49 @@
                                 }
 
                             }
+                            @{
+                                if (Id == "-99")
+                                {
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" id="btn-view" value="@Id" disabled>
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </button>
+                                        <button class="btn btn-info btn-sm" id="btn-edit" value="@Id" disabled>
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm" id="btn-delete" value="@Id" disabled>
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" id="btn-view" value="@Id">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </button>
+                                        <button class="btn btn-info btn-sm" id="btn-edit" value="@Id">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm" id="btn-delete" value="@Id">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                }
 
-                            <td>
-                                <a class="btn btn-primary btn-sm" id="btn-view" value="@Id">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a>
-                                <a class="btn btn-info btn-sm" id="btn-edit" value="@Id">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" id="btn-delete" value="@Id">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
-                            </td>
-
+                            }
                         </tr>
                     }
                 </tbody>
