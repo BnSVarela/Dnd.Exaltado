@@ -1,1 +1,199 @@
-﻿
+﻿@{
+    ViewBag.Title = " - Combat";
+}
+<div class="card card-outline card-primary" style="top:1vh; min-height:88.5vh; max-height:88.5vh;">
+    <div class="card-header">
+        <h3 class="card-title">Combat</h3>
+        <button type="button" id="go-to-next-turn" class="btn btn-primary float-right">Next Turn</button>
+    </div>
+
+    <form role="form">
+        <div class="card-body">
+
+            <div style="margin-top:2vh;">
+                <row>
+                    <div class="card card-outline card-secondary" style="min-height:5vh;max-height:5vh;">
+                        <div class="card-body" style="padding-top: 1vh;">
+                            <div style="width:50%; float:left">
+                                <center>
+                                    <label>Round: </label><label>2</label>
+                                </center>                                
+                            </div>
+                            <div style="width:50%; float:right">
+                                <center>
+                                    <label>Turn:</label><label id="turn-value">7</label>
+                                </center>                                
+                            </div>
+                        </div>
+                    </div>
+                </row>
+            </div>
+
+            <div class="form-group">
+
+                <div class="dataTables_wrapper dt-bootstrap4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="tabela-xyz" class="table table-bordered table-striped dataTable" role="grid" data-toggle="data-table">
+
+                                <thead id="theadItens">
+                                    <tr role="row">
+                                        <th>Creature</th>
+                                        <th>Init</th>
+                                        <th>HP Total</th>
+                                        <th>HP</th>
+                                        <th>HP %</th>
+                                        <th>Damage</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody id="tbodyItens">
+
+                                    <tr role="row"  style="background-color:aqua">
+                                        <td>Teste 1</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 2</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 3</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 4</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 5</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 6</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 7</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 8</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 9</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 10</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 11</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                    <tr role="row">
+                                        <td>Teste 12</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td>250</td>
+                                        <td>250</td>
+                                        <td>100</td>
+                                        <td><input type="number" style="width:100%" /></td>
+                                        <td><button>Calc Dmg</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:2vh;">
+                <row>
+                    <div class="card card-outline card-secondary" style="min-height:15vh; max-height:15vh">
+                        <div class="card-header">
+                            <h3 class="card-title">Creature Info</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </row>
+            </div>
+
+        </div>
+
+        <div class="card-footer" style="position:absolute;bottom:0px;min-width:100%;">
+            <button type="button" id="" class="btn btn-primary float-lg-right">Save</button>
+            <button type="button" id="" class="btn btn-primary float-right" style="margin-right:1vh;">Add</button>
+            <button type="button" id="" class="btn btn-primary float-left">Select</button>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/js/Combat.js"></script>
+}
+

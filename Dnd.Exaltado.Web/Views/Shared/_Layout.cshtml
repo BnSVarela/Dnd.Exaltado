@@ -10,7 +10,7 @@
    @Html.Partial("_Style")
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
     <div class="wrapper">
 
         @Html.Partial("_Header")
@@ -20,14 +20,9 @@
         @Html.Partial("_Loading")        
 
         <div class="content-wrapper">
-
-            <div class="content-header">
-                <div class="container-fluid">
-                </div>
-            </div>
             <div class="content">
                 <div class="container-fluid">
-                    <div>
+                    <div style="min-height:90vh; max-height:90vh;">
                         @RenderBody()
                     </div>
 
